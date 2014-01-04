@@ -1,0 +1,7 @@
+pod "KISObserver", :path => "../KISObserver.podspec"
+
+target "Demo" do
+end
+
+target "DemoTests" do
+end
