@@ -49,7 +49,7 @@ typedef void(^KISObserverBlock)(__weak id observed, NSDictionary *change);
  */
 - (void)notifyForKeyPath:(NSString *)keyPath change:(NSDictionary *)change;
 
-- (void)removeKeyPath:(NSString *)keyPath;
+- (void)removeKeyPaths:(NSString *)keyPaths;
 
 + (NSArray *)keyPathsWithString:(NSString *)string;
 

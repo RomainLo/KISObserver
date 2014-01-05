@@ -8,40 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class KISObservation;
+
 @interface KISObserver : NSObject
 
-#ifdef NS_BLOCKS_AVAILABLE
+- (void)addObservation:(KISObservation *)observation;
 
-- (void)observeObject:(NSObject *)object
-			 forKeyPaths:(NSString *)keyPath
-				  options:(NSKeyValueObservingOptions)options
-				withBlock:(void(^)(__weak id observed, NSDictionary *change))block;
+- (void)removeObservationOfObject:(NSObject *)object
+							 forKeyPaths:(NSString *)keyPaths;
 
-- (void)observeObject:(NSObject *)object
-			 forKeyPaths:(NSString *)keyPath
-				withBlock:(void(^)(__weak id observed, NSDictionary *change))block;
-#endif
-
-- (void)observeObject:(NSObject *)object
-			 forKeyPaths:(NSString *)keyPath
-				  options:(NSKeyValueObservingOptions)options;
-
-- (void)observeObject:(NSObject *)object
-			 forKeyPaths:(NSString *)keyPath;
-
-- (void)observeObject:(NSObject *)object
-			 forKeyPaths:(NSString *)keyPath
-				  options:(NSKeyValueObservingOptions)options
-			withSelector:(SEL)selector;
-
-- (void)observeObject:(NSObject *)object
-			 forKeyPaths:(NSString *)keyPath
-			withSelector:(SEL)selector;
-
-- (void)stopObservingObject:(NSObject *)object
-					 forKeyPaths:(NSString *)keyPath;
-
-- (void)stopObservingAllObjects;
+- (void)removeAllObservations;
 
 - (BOOL)isObservingObject:(NSObject *)object forKeyPath:(NSString *)keyPath;
 

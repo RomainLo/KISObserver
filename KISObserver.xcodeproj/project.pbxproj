@@ -7,17 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF25A6BF1878865B004A704F /* KISObserverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6BE1878865B004A704F /* KISObserverModel.m */; };
-		FF647058186F8E66004E2362 /* KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF647057186F8E66004E2362 /* KISObserver.m */; };
+		FF25A6BF1878865B004A704F /* KISObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6BE1878865B004A704F /* KISObservation.m */; };
+		FF25A6C31878D688004A704F /* NSObject+KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6C21878D688004A704F /* NSObject+KISObserver.m */; };
+		FF25A6C41879A93B004A704F /* KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF647057186F8E66004E2362 /* KISObserver.m */; };
+		FF25A6D51879B521004A704F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFFC186F8B770090428E /* XCTest.framework */; };
+		FF25A6D61879B521004A704F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFEE186F8B770090428E /* Foundation.framework */; };
+		FF25A6D71879B521004A704F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFFF186F8B770090428E /* UIKit.framework */; };
+		FF25A6E61879B531004A704F /* KISObservationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6CC1879B01C004A704F /* KISObservationTest.m */; };
+		FF25A6E71879B6EC004A704F /* KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF647057186F8E66004E2362 /* KISObserver.m */; };
+		FF25A6E81879B6F5004A704F /* KISObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6BE1878865B004A704F /* KISObservation.m */; };
+		FF25A6E91879B73A004A704F /* NSObject+KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6C21878D688004A704F /* NSObject+KISObserver.m */; };
+		FF25A6EC1879FA2E004A704F /* KISBlockObservationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6EB1879FA2E004A704F /* KISBlockObservationTest.m */; };
+		FF25A6EE1879FC64004A704F /* KISSelectorObservationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6ED1879FC64004A704F /* KISSelectorObservationTest.m */; };
+		FF25A6F0187A039F004A704F /* KISObserverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6EF187A039F004A704F /* KISObserverTest.m */; };
 		FFFABFEF186F8B770090428E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFEE186F8B770090428E /* Foundation.framework */; };
-		FFFABFFD186F8B770090428E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFFC186F8B770090428E /* XCTest.framework */; };
-		FFFABFFE186F8B770090428E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFEE186F8B770090428E /* Foundation.framework */; };
-		FFFAC000186F8B770090428E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFFF186F8B770090428E /* UIKit.framework */; };
-		FFFAC003186F8B770090428E /* libKISObserver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFEB186F8B770090428E /* libKISObserver.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FFFAC001186F8B770090428E /* PBXContainerItemProxy */ = {
+		FF25A6E11879B521004A704F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FFFABFE3186F8B770090428E /* Project object */;
 			proxyType = 1;
@@ -39,9 +46,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FF25A6BD18788505004A704F /* KISObserverModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KISObserverModel.h; sourceTree = "<group>"; };
-		FF25A6BE1878865B004A704F /* KISObserverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObserverModel.m; sourceTree = "<group>"; };
-		FF25A6C018788E23004A704F /* KISObserverTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "KISObserverTests-Info.plist"; sourceTree = "<group>"; };
+		FF25A6BD18788505004A704F /* KISObservation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KISObservation.h; sourceTree = "<group>"; };
+		FF25A6BE1878865B004A704F /* KISObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObservation.m; sourceTree = "<group>"; };
+		FF25A6C11878D688004A704F /* NSObject+KISObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KISObserver.h"; sourceTree = "<group>"; };
+		FF25A6C21878D688004A704F /* NSObject+KISObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KISObserver.m"; sourceTree = "<group>"; };
+		FF25A6CC1879B01C004A704F /* KISObservationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObservationTest.m; sourceTree = "<group>"; };
+		FF25A6CD1879B01C004A704F /* KISObserverTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "KISObserverTests-Info.plist"; sourceTree = "<group>"; };
+		FF25A6D41879B521004A704F /* KISObserverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KISObserverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF25A6EA1879B7D2004A704F /* KISObserverTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KISObserverTests-Prefix.pch"; sourceTree = "<group>"; };
+		FF25A6EB1879FA2E004A704F /* KISBlockObservationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISBlockObservationTest.m; sourceTree = "<group>"; };
+		FF25A6ED1879FC64004A704F /* KISSelectorObservationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISSelectorObservationTest.m; sourceTree = "<group>"; };
+		FF25A6EF187A039F004A704F /* KISObserverTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObserverTest.m; sourceTree = "<group>"; };
 		FF64704D186F8DB7004E2362 /* KISObserver-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KISObserver-Prefix.pch"; sourceTree = "<group>"; };
 		FF647050186F8DB7004E2362 /* KISObserver.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = KISObserver.podspec; sourceTree = "<group>"; };
 		FF647051186F8DB7004E2362 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -51,12 +66,21 @@
 		FF647057186F8E66004E2362 /* KISObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObserver.m; sourceTree = "<group>"; };
 		FFFABFEB186F8B770090428E /* libKISObserver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKISObserver.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFABFEE186F8B770090428E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		FFFABFFB186F8B770090428E /* KISObserverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KISObserverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFABFFC186F8B770090428E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		FFFABFFF186F8B770090428E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FF25A6D11879B521004A704F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF25A6D51879B521004A704F /* XCTest.framework in Frameworks */,
+				FF25A6D71879B521004A704F /* UIKit.framework in Frameworks */,
+				FF25A6D61879B521004A704F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FFFABFE8186F8B770090428E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,37 +89,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FFFABFF8186F8B770090428E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FFFABFFD186F8B770090428E /* XCTest.framework in Frameworks */,
-				FFFAC003186F8B770090428E /* libKISObserver.a in Frameworks */,
-				FFFAC000186F8B770090428E /* UIKit.framework in Frameworks */,
-				FFFABFFE186F8B770090428E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF25A6CB1879B01C004A704F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FF25A6CC1879B01C004A704F /* KISObservationTest.m */,
+				FF25A6CD1879B01C004A704F /* KISObserverTests-Info.plist */,
+				FF25A6EA1879B7D2004A704F /* KISObserverTests-Prefix.pch */,
+				FF25A6EB1879FA2E004A704F /* KISBlockObservationTest.m */,
+				FF25A6ED1879FC64004A704F /* KISSelectorObservationTest.m */,
+				FF25A6EF187A039F004A704F /* KISObserverTest.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		FF647048186F8DB7004E2362 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				FF647056186F8E66004E2362 /* KISObserver.h */,
 				FF647057186F8E66004E2362 /* KISObserver.m */,
-				FF25A6BD18788505004A704F /* KISObserverModel.h */,
-				FF25A6BE1878865B004A704F /* KISObserverModel.m */,
+				FF25A6BD18788505004A704F /* KISObservation.h */,
+				FF25A6BE1878865B004A704F /* KISObservation.m */,
+				FF25A6C11878D688004A704F /* NSObject+KISObserver.h */,
+				FF25A6C21878D688004A704F /* NSObject+KISObserver.m */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		FF647055186F8DC2004E2362 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				FF25A6C018788E23004A704F /* KISObserverTests-Info.plist */,
-			);
-			path = Test;
 			sourceTree = "<group>";
 		};
 		FFFABFE2186F8B770090428E = {
@@ -109,7 +129,7 @@
 				FFFABFEC186F8B770090428E /* Products */,
 				FF647052186F8DB7004E2362 /* Rakefile */,
 				FF647053186F8DB7004E2362 /* README.md */,
-				FF647055186F8DC2004E2362 /* Test */,
+				FF25A6CB1879B01C004A704F /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				FFFABFEB186F8B770090428E /* libKISObserver.a */,
-				FFFABFFB186F8B770090428E /* KISObserverTests.xctest */,
+				FF25A6D41879B521004A704F /* KISObserverTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +155,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FF25A6D31879B521004A704F /* KISObserverTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF25A6E31879B521004A704F /* Build configuration list for PBXNativeTarget "KISObserverTests" */;
+			buildPhases = (
+				FF25A6D01879B521004A704F /* Sources */,
+				FF25A6D11879B521004A704F /* Frameworks */,
+				FF25A6D21879B521004A704F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF25A6E21879B521004A704F /* PBXTargetDependency */,
+			);
+			name = KISObserverTests;
+			productName = KISObserverTests;
+			productReference = FF25A6D41879B521004A704F /* KISObserverTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FFFABFEA186F8B770090428E /* KISObserver */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFFAC00E186F8B770090428E /* Build configuration list for PBXNativeTarget "KISObserver" */;
@@ -152,24 +190,6 @@
 			productReference = FFFABFEB186F8B770090428E /* libKISObserver.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		FFFABFFA186F8B770090428E /* KISObserverTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FFFAC011186F8B770090428E /* Build configuration list for PBXNativeTarget "KISObserverTests" */;
-			buildPhases = (
-				FFFABFF7186F8B770090428E /* Sources */,
-				FFFABFF8186F8B770090428E /* Frameworks */,
-				FFFABFF9186F8B770090428E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FFFAC002186F8B770090428E /* PBXTargetDependency */,
-			);
-			name = KISObserverTests;
-			productName = KISObserverTests;
-			productReference = FFFABFFB186F8B770090428E /* KISObserverTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -178,6 +198,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = RomainLo;
+				TargetAttributes = {
+					FF25A6D31879B521004A704F = {
+						TestTargetID = FFFABFEA186F8B770090428E;
+					};
+				};
 			};
 			buildConfigurationList = FFFABFE6186F8B770090428E /* Build configuration list for PBXProject "KISObserver" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -192,13 +217,13 @@
 			projectRoot = "";
 			targets = (
 				FFFABFEA186F8B770090428E /* KISObserver */,
-				FFFABFFA186F8B770090428E /* KISObserverTests */,
+				FF25A6D31879B521004A704F /* KISObserverTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FFFABFF9186F8B770090428E /* Resources */ = {
+		FF25A6D21879B521004A704F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -208,33 +233,79 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FF25A6D01879B521004A704F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF25A6EC1879FA2E004A704F /* KISBlockObservationTest.m in Sources */,
+				FF25A6E61879B531004A704F /* KISObservationTest.m in Sources */,
+				FF25A6E81879B6F5004A704F /* KISObservation.m in Sources */,
+				FF25A6E71879B6EC004A704F /* KISObserver.m in Sources */,
+				FF25A6F0187A039F004A704F /* KISObserverTest.m in Sources */,
+				FF25A6E91879B73A004A704F /* NSObject+KISObserver.m in Sources */,
+				FF25A6EE1879FC64004A704F /* KISSelectorObservationTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FFFABFE7186F8B770090428E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF25A6BF1878865B004A704F /* KISObserverModel.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FFFABFF7186F8B770090428E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF647058186F8E66004E2362 /* KISObserver.m in Sources */,
+				FF25A6C41879A93B004A704F /* KISObserver.m in Sources */,
+				FF25A6BF1878865B004A704F /* KISObservation.m in Sources */,
+				FF25A6C31878D688004A704F /* NSObject+KISObserver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FFFAC002186F8B770090428E /* PBXTargetDependency */ = {
+		FF25A6E21879B521004A704F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FFFABFEA186F8B770090428E /* KISObserver */;
-			targetProxy = FFFAC001186F8B770090428E /* PBXContainerItemProxy */;
+			targetProxy = FF25A6E11879B521004A704F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		FF25A6E41879B521004A704F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/KISObserverTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Tests/KISObserverTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		FF25A6E51879B521004A704F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/KISObserverTests-Prefix.pch";
+				INFOPLIST_FILE = "Tests/KISObserverTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		FFFAC00C186F8B770090428E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -310,7 +381,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/KISObserver.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "KISObserver/KISObserver-Prefix.pch";
+				GCC_PREFIX_HEADER = "KISObserver-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -322,54 +393,24 @@
 			buildSettings = {
 				DSTROOT = /tmp/KISObserver.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "KISObserver/KISObserver-Prefix.pch";
+				GCC_PREFIX_HEADER = "KISObserver-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		FFFAC012186F8B770090428E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "KISObserver/KISObserver-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "KISObserverTests/KISObserverTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		FFFAC013186F8B770090428E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "KISObserver/KISObserver-Prefix.pch";
-				INFOPLIST_FILE = "KISObserverTests/KISObserverTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FF25A6E31879B521004A704F /* Build configuration list for PBXNativeTarget "KISObserverTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF25A6E41879B521004A704F /* Debug */,
+				FF25A6E51879B521004A704F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		FFFABFE6186F8B770090428E /* Build configuration list for PBXProject "KISObserver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -384,15 +425,6 @@
 			buildConfigurations = (
 				FFFAC00F186F8B770090428E /* Debug */,
 				FFFAC010186F8B770090428E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FFFAC011186F8B770090428E /* Build configuration list for PBXNativeTarget "KISObserverTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FFFAC012186F8B770090428E /* Debug */,
-				FFFAC013186F8B770090428E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

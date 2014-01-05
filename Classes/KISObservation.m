@@ -47,9 +47,12 @@ NSString * const kKISObservationContext = @"kis.observer.model.context";
 	[self.observer observeValueForKeyPath:keyPath ofObject:self.observed change:change context:(__bridge void *)(kKISObservationContext)];
 }
 
-- (void)removeKeyPath:(NSString *)keyPath
+- (void)removeKeyPaths:(NSString *)keyPathStr
 {
-	[_keyPaths removeObject:keyPath];
+	NSArray *keyPaths = [[self class] keyPathsWithString:keyPathStr];
+	for (NSString *keyPath in keyPaths) {
+		[_keyPaths removeObject:keyPath];
+	}
 }
 
 - (NSArray *)keyPaths
@@ -77,7 +80,7 @@ NSString * const kKISObservationContext = @"kis.observer.model.context";
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The block can't be nil." userInfo:nil] raise];
 	
 	self = [super initWithObserver:observer observed:observed options:options keyPaths:keyPathStr];
-	if (nil == self) {
+	if (self) {
 		_block = [block copy];
 	}
 	
@@ -113,7 +116,7 @@ NSString * const kKISObservationContext = @"kis.observer.model.context";
 	if (self) {
 		NSMethodSignature *methodSignature = [self.observer methodSignatureForSelector:selector];
 		NSInteger numberOfArguments = [methodSignature numberOfArguments];
-		if (!methodSignature || (2 < numberOfArguments))
+		if (!methodSignature || (4 < numberOfArguments))
 			[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The selector should have 2 parameters maximum and be part of the observer." userInfo:nil] raise];
 		
 		_selector = selector;
@@ -124,17 +127,13 @@ NSString * const kKISObservationContext = @"kis.observer.model.context";
 
 - (void)notifyForKeyPath:(NSString *)keyPath change:(NSDictionary *)change
 {
-	NSMethodSignature *methodSignature = [self.observer methodSignatureForSelector:self.selector];
-	NSInteger numberOfArguments = [methodSignature numberOfArguments];
-	
-	if (!methodSignature) // bad initializer
-		return [super notifyForKeyPath:keyPath change:change];
-	
 	if (!change)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The change dictionary can't be nil." userInfo:nil] raise];
 	if (![self.keyPaths containsObject:keyPath])
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The keypath can't be nil or unknown." userInfo:nil] raise];
 
+	NSMethodSignature *methodSignature = [self.observer methodSignatureForSelector:self.selector];
+	NSInteger numberOfArguments = [methodSignature numberOfArguments];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 	switch (numberOfArguments) {
@@ -145,7 +144,7 @@ NSString * const kKISObservationContext = @"kis.observer.model.context";
 			[self.observer performSelector:self.selector withObject:self.observed];
 			break;
 		case 4: // 2 argument: the observed object & the change dics
-			[self.observer performSelector:self.selector withObject:change];
+			[self.observer performSelector:self.selector withObject:self.observed withObject:change];
 			break;
 		default:
 			NSAssert(NO, @"2 < numberOfArguments < 4");
