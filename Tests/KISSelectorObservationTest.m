@@ -28,37 +28,37 @@ NSString * const kSelectorKVOPropertyPath = @"kvoProperty";
 
 - (void)testInitializer
 {
-   XCTAssertNoThrow([[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(_selector)]);
+   XCTAssertNoThrow([[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPath:kSelectorKVOPropertyPath selector:@selector(_selector)]);
 }
 
 - (void)testInitializerWithUnknownSelector
 {
-   XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(removeKeyPaths:)], @"Should send an exception because the selector is unknown on the object.");
+   XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPath:kSelectorKVOPropertyPath selector:@selector(addObjectsFromArray:)], @"Should send an exception because the selector is unknown on the object.");
 }
 
 - (void)testInitializerWithTooManyArgumentSelector
 {
-   XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(_selectorWithObject:change:whatever:)], @"Should send an exception because the selector has more than two parameters.");
+   XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPath:kSelectorKVOPropertyPath selector:@selector(_selectorWithObject:change:whatever:)], @"Should send an exception because the selector has more than two parameters.");
 }
 
 - (void)testNotificationWithoutArgument
 {
-	KISSelectorObservation *obs = [[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(_selector)];
-	[obs notifyForKeyPath:kSelectorKVOPropertyPath change:@{}];
+	KISSelectorObservation *obs = [[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPath:kSelectorKVOPropertyPath selector:@selector(_selector)];
+	[obs notifyForChange:@{}];
 	XCTAssertTrue(self.selectorMark & 1, @"Should have call the selector without parameter.");
 }
 
 - (void)testNotificationWithOneArgument
 {
-	KISSelectorObservation *obs = [[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(_selectorWithObject:)];
-	[obs notifyForKeyPath:kSelectorKVOPropertyPath change:@{}];
+	KISSelectorObservation *obs = [[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPath:kSelectorKVOPropertyPath selector:@selector(_selectorWithObject:)];
+	[obs notifyForChange:@{}];
 	XCTAssertTrue(self.selectorMark & (1 << 1), @"Should have call the selector with one parameter.");
 }
 
 - (void)testNotificationWithTwoArguments
 {
-	KISSelectorObservation *obs = [[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(_selectorWithObject:change:)];
-	[obs notifyForKeyPath:kSelectorKVOPropertyPath change:@{}];
+	KISSelectorObservation *obs = [[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPath:kSelectorKVOPropertyPath selector:@selector(_selectorWithObject:change:)];
+	[obs notifyForChange:@{}];
 	XCTAssertTrue(self.selectorMark & (1 << 2), @"Should have call the selector with two parameters.");
 }
 

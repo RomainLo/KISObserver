@@ -33,25 +33,19 @@ typedef void(^KISObserverBlock)(__weak id observed, NSDictionary *change);
 @property (nonatomic, assign, readonly) NSKeyValueObservingOptions options;
 
 /** The list of observed key paths. */
-@property (nonatomic, copy, readonly) NSArray *keyPaths;
+@property (nonatomic, copy, readonly) NSString *keyPath;
 
 - (instancetype)initWithObserver:(id)observer
 								observed:(id)observed
 								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPathStr;
+								keyPath:(NSString *)keyPath;
 
 /**
  Notify the observer that changes has happen for the given key path.
  Subclasses override this method for implementing its own notification style.
- @param keyPath The key path of the notification.
-					 It can't be nil and it should be contained in the keyPaths property.
  @param change The change dictionnary of the notification. It can't be nil.
  */
-- (void)notifyForKeyPath:(NSString *)keyPath change:(NSDictionary *)change;
-
-- (void)removeKeyPaths:(NSString *)keyPaths;
-
-+ (NSArray *)keyPathsWithString:(NSString *)string;
+- (void)notifyForChange:(NSDictionary *)change;
 
 @end
 
@@ -64,7 +58,7 @@ typedef void(^KISObserverBlock)(__weak id observed, NSDictionary *change);
 - (instancetype)initWithObserver:(id)observer
 								observed:(id)observed
 								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPathStr
+								keyPath:(NSString *)keyPath
 									block:(KISObserverBlock)block;
 
 @end
@@ -78,7 +72,7 @@ typedef void(^KISObserverBlock)(__weak id observed, NSDictionary *change);
 - (instancetype)initWithObserver:(id)observer
 								observed:(id)observed
 								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPathStr
+								 keyPath:(NSString *)keyPath
 								selector:(SEL)selector;
 
 @end

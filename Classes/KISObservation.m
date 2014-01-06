@@ -10,20 +10,18 @@
 
 NSString * const kKISObservationContext = @"kis.observer.model.context";
 
-@implementation KISObservation {
-	NSMutableArray *_keyPaths;
-}
+@implementation KISObservation
 
 - (instancetype)initWithObserver:(id)observer
 								observed:(id)observed
 								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPathStr
+								keyPath:(NSString *)keyPath
 {
 	if (!observed)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The observed can't be nil." userInfo:nil] raise];
 	if (!observer)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The observer can't be nil." userInfo:nil] raise];
-	if (![keyPathStr length])
+	if (![keyPath length])
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The keypaths can't be nil or empty." userInfo:nil] raise];
 	
 	self = [super init];
@@ -31,34 +29,20 @@ NSString * const kKISObservationContext = @"kis.observer.model.context";
 		_observer = observer;
 		_observed = observed;
 		_options = options;
-		_keyPaths = [[[self class] keyPathsWithString:keyPathStr] mutableCopy];
+		_keyPath = keyPath;
 	}
 	
 	return self;
 }
 
-- (void)notifyForKeyPath:(NSString *)keyPath change:(NSDictionary *)change
+- (void)notifyForChange:(NSDictionary *)change
 {
 	if (!change)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The change dictionary can't be nil." userInfo:nil] raise];
-	if (![self.keyPaths containsObject:keyPath])
-		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The keypath can't be nil or unknown." userInfo:nil] raise];
 		
-	[self.observer observeValueForKeyPath:keyPath ofObject:self.observed change:change context:(__bridge void *)(kKISObservationContext)];
+	[self.observer observeValueForKeyPath:self.keyPath ofObject:self.observed change:change context:(__bridge void *)(kKISObservationContext)];
 }
 
-- (void)removeKeyPaths:(NSString *)keyPathStr
-{
-	NSArray *keyPaths = [[self class] keyPathsWithString:keyPathStr];
-	for (NSString *keyPath in keyPaths) {
-		[_keyPaths removeObject:keyPath];
-	}
-}
-
-- (NSArray *)keyPaths
-{
-	return [_keyPaths copy];
-}
 
 + (NSArray *)keyPathsWithString:(NSString *)string
 {
@@ -73,13 +57,13 @@ NSString * const kKISObservationContext = @"kis.observer.model.context";
 - (instancetype)initWithObserver:(id)observer
 								observed:(id)observed
 								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPathStr
+								keyPath:(NSString *)keyPath
 									block:(KISObserverBlock)block
 {
 	if (!block)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The block can't be nil." userInfo:nil] raise];
 	
-	self = [super initWithObserver:observer observed:observed options:options keyPaths:keyPathStr];
+	self = [super initWithObserver:observer observed:observed options:options keyPath:keyPath];
 	if (self) {
 		_block = [block copy];
 	}
@@ -87,15 +71,10 @@ NSString * const kKISObservationContext = @"kis.observer.model.context";
 	return self;
 }
 
-- (void)notifyForKeyPath:(NSString *)keyPath change:(NSDictionary *)change
+- (void)notifyForChange:(NSDictionary *)change
 {
-	if (!self.block) // bad initializer
-		return [super notifyForKeyPath:keyPath change:change];
-	
 	if (!change)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The change dictionary can't be nil." userInfo:nil] raise];
-	if (![self.keyPaths containsObject:keyPath])
-		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The keypath can't be nil or unknown." userInfo:nil] raise];
 		
 	self.block(self.observed, change);
 }
@@ -108,10 +87,10 @@ NSString * const kKISObservationContext = @"kis.observer.model.context";
 - (instancetype)initWithObserver:(id)observer
 								observed:(id)observed
 								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPathStr
+								keyPath:(NSString *)keyPath
 								selector:(SEL)selector
 {
-	self = [super initWithObserver:observer observed:observed options:options keyPaths:keyPathStr];
+	self = [super initWithObserver:observer observed:observed options:options keyPath:keyPath];
 	
 	if (self) {
 		NSMethodSignature *methodSignature = [self.observer methodSignatureForSelector:selector];
@@ -125,13 +104,11 @@ NSString * const kKISObservationContext = @"kis.observer.model.context";
 	return self;
 }
 
-- (void)notifyForKeyPath:(NSString *)keyPath change:(NSDictionary *)change
+- (void)notifyForChange:(NSDictionary *)change
 {
 	if (!change)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The change dictionary can't be nil." userInfo:nil] raise];
-	if (![self.keyPaths containsObject:keyPath])
-		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The keypath can't be nil or unknown." userInfo:nil] raise];
-
+	
 	NSMethodSignature *methodSignature = [self.observer methodSignatureForSelector:self.selector];
 	NSInteger numberOfArguments = [methodSignature numberOfArguments];
 #pragma clang diagnostic push

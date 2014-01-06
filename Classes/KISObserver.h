@@ -12,10 +12,11 @@
 
 @interface KISObserver : NSObject
 
+@property (nonatomic, readonly, copy) NSArray *observations;
+
 - (void)addObservation:(KISObservation *)observation;
 
-- (void)removeObservationOfObject:(NSObject *)object
-							 forKeyPaths:(NSString *)keyPaths;
+- (void)removeObservationOfObject:(NSObject *)object forKeyPath:(NSString *)keyPath;
 
 - (void)removeAllObservations;
 

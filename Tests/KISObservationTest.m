@@ -31,67 +31,44 @@ NSString * const k3KeyPaths = @"kvoProperty|kvoProperty1|kvoProperty2";
 
 - (void)testInitializer
 {
-   XCTAssertNoThrow([[KISObservation alloc] initWithObserver:self observed:self options:0 keyPaths:kKVOPropertyPath]);
+   XCTAssertNoThrow([[KISObservation alloc] initWithObserver:self observed:self options:0 keyPath:kKVOPropertyPath]);
 }
 
 - (void)testInitializerWithNilObserver
 {
-   XCTAssertThrows([[KISObservation alloc] initWithObserver:nil observed:self options:0 keyPaths:kKVOPropertyPath]);
+   XCTAssertThrows([[KISObservation alloc] initWithObserver:nil observed:self options:0 keyPath:kKVOPropertyPath]);
 }
 
 - (void)testInitializerWithNilObserved
 {
-   XCTAssertThrows([[KISObservation alloc] initWithObserver:self observed:nil options:0 keyPaths:kKVOPropertyPath]);
+   XCTAssertThrows([[KISObservation alloc] initWithObserver:self observed:nil options:0 keyPath:kKVOPropertyPath]);
 }
 
 - (void)testInitializerWithEmptyKeyPath
 {
-   XCTAssertThrows([[KISObservation alloc] initWithObserver:self observed:nil options:0 keyPaths:@""]);
+   XCTAssertThrows([[KISObservation alloc] initWithObserver:self observed:nil options:0 keyPath:@""]);
 }
 
-- (void)testInitializerWithOneKeyPath
+- (void)testInitializerSetting
 {
-	KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:self options:0 keyPaths:kKVOPropertyPath];
-	XCTAssertEqual(observation.keyPaths.count, 1U, @"Should found 1 keypath within the keypath string.");
-}
-
-- (void)testInitializerWithManyKeyPaths
-{
-	KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:self options:0 keyPaths:k3KeyPaths];
-	XCTAssertEqual(observation.keyPaths.count, 3U, @"Should found 3 keypaths within the keypath string.");
+	KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionOld keyPath:kKVOPropertyPath];
+	XCTAssertEqual(self, observation.observer, @"The observer should be self");
+	XCTAssertEqual(self, observation.observed, @"The observed should be self");
+	XCTAssertEqual(NSKeyValueObservingOptionOld, observation.options, @"The options should be NSKeyValueObservingOptionOld");
+	XCTAssertEqual(kKVOPropertyPath, observation.keyPath, @"The keyPath should be kKVOPropertyPath");
 }
 
 - (void)testNotification
 {
-   KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:self options:0 keyPaths:kKVOPropertyPath];
-	[observation notifyForKeyPath:kKVOPropertyPath change:@{}];
+   KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:self options:0 keyPath:kKVOPropertyPath];
+	[observation notifyForChange:@{}];
 	XCTAssertEqual(self.notificationCount, 1U, @"Should have received one notification");
-}
-
-- (void)testNotificationWithWrongKeyPath
-{
-   KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:self options:0 keyPaths:kKVOPropertyPath];
-	XCTAssertThrows([observation notifyForKeyPath:@"whatEver" change:@{}], @"Should send an exception due to the unknown key path.");
 }
 
 - (void)testNotificationWithNilChange
 {
-   KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:self options:0 keyPaths:kKVOPropertyPath];
-	XCTAssertThrows([observation notifyForKeyPath:kKVOPropertyPath change:nil], @"Should send an exception due to the nil change dir.");
-}
-
-- (void)testRemoveOneKeyPath
-{
-	KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:self options:0 keyPaths:k3KeyPaths];
-	[observation removeKeyPaths:kKVOPropertyPath];
-	XCTAssertEqual(observation.keyPaths.count, 2U, @"Should found 2 keypaths after removing one.");
-}
-
-- (void)testRemoveUniqueKeyPath
-{
-	KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:self options:0 keyPaths:kKVOPropertyPath];
-	[observation removeKeyPaths:kKVOPropertyPath];
-	XCTAssertEqual(observation.keyPaths.count, 0U, @"Should found 2 keypaths after removing one.");
+   KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:self options:0 keyPath:kKVOPropertyPath];
+	XCTAssertThrows([observation notifyForChange:nil], @"Should send an exception due to the nil change dir.");
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

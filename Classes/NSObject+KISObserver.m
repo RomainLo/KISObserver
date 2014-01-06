@@ -34,16 +34,20 @@
 				  options:(NSKeyValueObservingOptions)options
 				withBlock:(void(^)(__weak id observed, NSDictionary *change))block
 {
-	KISBlockObservation *observation = [[KISBlockObservation alloc] initWithObserver:self observed:object options:options keyPaths:keyPaths block:block];
-	[self.observer addObservation:observation];
+	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
+		KISBlockObservation *observation = [[KISBlockObservation alloc] initWithObserver:self observed:object options:options keyPath:keyPath block:block];
+		[self.observer addObservation:observation];
+	}
 }
 
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
 				withBlock:(void(^)(__weak id observed, NSDictionary *change))block
 {
-	KISBlockObservation *observation = [[KISBlockObservation alloc] initWithObserver:self observed:object options:0 keyPaths:keyPaths block:block];
-	[self.observer addObservation:observation];
+	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
+		KISBlockObservation *observation = [[KISBlockObservation alloc] initWithObserver:self observed:object options:0 keyPath:keyPath block:block];
+		[self.observer addObservation:observation];
+	}
 }
 
 #endif
@@ -52,15 +56,19 @@
 			 forKeyPaths:(NSString *)keyPaths
 				  options:(NSKeyValueObservingOptions)options
 {
-	KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:object options:options keyPaths:keyPaths];
-	[self.observer addObservation:observation];
+	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
+		KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:object options:options keyPath:keyPath];
+		[self.observer addObservation:observation];
+	}
 }
 
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
 {
-	KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:object options:0 keyPaths:keyPaths];
-	[self.observer addObservation:observation];
+	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
+		KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:object options:0 keyPath:keyPath];
+		[self.observer addObservation:observation];
+	}
 }
 
 - (void)observeObject:(NSObject *)object
@@ -68,21 +76,27 @@
 				  options:(NSKeyValueObservingOptions)options
 			withSelector:(SEL)selector
 {
-	KISSelectorObservation *observation = [[KISSelectorObservation alloc] initWithObserver:self observed:object options:options keyPaths:keyPaths selector:selector];
-	[self.observer addObservation:observation];
+	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
+		KISSelectorObservation *observation = [[KISSelectorObservation alloc] initWithObserver:self observed:object options:options keyPath:keyPath selector:selector];
+		[self.observer addObservation:observation];
+	}
 }
 
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
 			withSelector:(SEL)selector
 {
-	KISSelectorObservation *observation = [[KISSelectorObservation alloc] initWithObserver:self observed:object options:0 keyPaths:keyPaths selector:selector];
-	[self.observer addObservation:observation];
+	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
+		KISSelectorObservation *observation = [[KISSelectorObservation alloc] initWithObserver:self observed:object options:0 keyPath:keyPath selector:selector];
+		[self.observer addObservation:observation];
+	}
 }
 
 - (void)stopObservingObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths
 {
-	[self.observer removeObservationOfObject:object forKeyPaths:keyPaths];
+	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
+		[self.observer removeObservationOfObject:object forKeyPath:keyPath];
+	}
 }
 
 - (void)stopObservingAllObjects
@@ -93,6 +107,11 @@
 - (BOOL)isObservingObject:(NSObject *)object forKeyPath:(NSString *)keyPath
 {
 	return [self.observer isObservingObject:object forKeyPath:keyPath];
+}
+
+- (NSArray *)kis_keyPathsFromString:(NSString *)keyPaths
+{
+	return [keyPaths componentsSeparatedByString:@"|"];
 }
 
 @end
