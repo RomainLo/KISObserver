@@ -18,7 +18,7 @@ it simply add the following line to your Podfile:
 
 ## Author
 
-RomainLo, romain.lofaso@gmail.com
+RomainLo
 
 ## License
 
