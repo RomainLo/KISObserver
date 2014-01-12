@@ -9,22 +9,26 @@
 #import "NSObject+KISObserver.h"
 
 #import "KISObserver.h"
-#import "KISObservation.h"
+
+// Observations
+#import "KISBlockObservation.h"
+#import "KISSelectorObservation.h"
+#import "KISDefaultObservation.h"
 
 @interface NSObject ()
 
-@property (nonatomic, strong) KISObserver *_observer;
+@property (nonatomic, strong) KISObserver *_kis_observer;
 
 @end
 
 @implementation NSObject (KISObserver)
 
-- (KISObserver *)observer {
-	if (!self._observer) {
-		self._observer = [[KISObserver alloc] init];
+- (KISObserver *)kis_observer {
+	if (!self._kis_observer) {
+		self._kis_observer = [[KISObserver alloc] init];
 	}
 	
-	return self._observer;
+	return self._kis_observer;
 }
 
 #ifdef NS_BLOCKS_AVAILABLE
@@ -34,20 +38,16 @@
 				  options:(NSKeyValueObservingOptions)options
 				withBlock:(void(^)(__weak id observed, NSDictionary *change))block
 {
-	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
-		KISBlockObservation *observation = [[KISBlockObservation alloc] initWithObserver:self observed:object options:options keyPath:keyPath block:block];
-		[self.observer addObservation:observation];
-	}
+	KISBlockObservation *observation = [[KISBlockObservation alloc] initWithObserver:self observed:object options:options keyPaths:keyPaths block:block];
+	[self.kis_observer addObservation:observation];
 }
 
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
 				withBlock:(void(^)(__weak id observed, NSDictionary *change))block
 {
-	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
-		KISBlockObservation *observation = [[KISBlockObservation alloc] initWithObserver:self observed:object options:0 keyPath:keyPath block:block];
-		[self.observer addObservation:observation];
-	}
+	KISBlockObservation *observation = [[KISBlockObservation alloc] initWithObserver:self observed:object options:0 keyPaths:keyPaths block:block];
+	[self.kis_observer addObservation:observation];
 }
 
 #endif
@@ -56,19 +56,15 @@
 			 forKeyPaths:(NSString *)keyPaths
 				  options:(NSKeyValueObservingOptions)options
 {
-	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
-		KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:object options:options keyPath:keyPath];
-		[self.observer addObservation:observation];
-	}
+	KISDefaultObservation *observation = [[KISDefaultObservation alloc] initWithObserver:self observed:object options:options keyPaths:keyPaths];
+	[self.kis_observer addObservation:observation];
 }
 
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
 {
-	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
-		KISObservation *observation = [[KISObservation alloc] initWithObserver:self observed:object options:0 keyPath:keyPath];
-		[self.observer addObservation:observation];
-	}
+	KISDefaultObservation *observation = [[KISDefaultObservation alloc] initWithObserver:self observed:object options:0 keyPaths:keyPaths];
+	[self.kis_observer addObservation:observation];
 }
 
 - (void)observeObject:(NSObject *)object
@@ -76,42 +72,31 @@
 				  options:(NSKeyValueObservingOptions)options
 			withSelector:(SEL)selector
 {
-	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
-		KISSelectorObservation *observation = [[KISSelectorObservation alloc] initWithObserver:self observed:object options:options keyPath:keyPath selector:selector];
-		[self.observer addObservation:observation];
-	}
+	KISSelectorObservation *observation = [[KISSelectorObservation alloc] initWithObserver:self observed:object options:options keyPaths:keyPaths selector:selector];
+	[self.kis_observer addObservation:observation];
 }
 
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
 			withSelector:(SEL)selector
 {
-	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
-		KISSelectorObservation *observation = [[KISSelectorObservation alloc] initWithObserver:self observed:object options:0 keyPath:keyPath selector:selector];
-		[self.observer addObservation:observation];
-	}
+	KISSelectorObservation *observation = [[KISSelectorObservation alloc] initWithObserver:self observed:object options:0 keyPaths:keyPaths selector:selector];
+	[self.kis_observer addObservation:observation];
 }
 
 - (void)stopObservingObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths
 {
-	for (NSString *keyPath in [self kis_keyPathsFromString:keyPaths]) {
-		[self.observer removeObservationOfObject:object forKeyPath:keyPath];
-	}
+	[self.kis_observer removeObservationOfObject:object forKeyPaths:keyPaths];
 }
 
 - (void)stopObservingAllObjects
 {
-	[self.observer removeAllObservations];
+	[self.kis_observer removeAllObservations];
 }
 
 - (BOOL)isObservingObject:(NSObject *)object forKeyPath:(NSString *)keyPath
 {
-	return [self.observer isObservingObject:object forKeyPath:keyPath];
-}
-
-- (NSArray *)kis_keyPathsFromString:(NSString *)keyPaths
-{
-	return [keyPaths componentsSeparatedByString:@"|"];
+	return [self.kis_observer isObservingObject:object forKeyPath:keyPath];
 }
 
 @end

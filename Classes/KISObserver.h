@@ -8,18 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@class KISObservation;
+@protocol KISObservation;
 
 @interface KISObserver : NSObject
 
 @property (nonatomic, readonly, copy) NSArray *observations;
 
-- (void)addObservation:(KISObservation *)observation;
+- (void)addObservation:(id<KISObservation>)observation;
 
-- (void)removeObservationOfObject:(NSObject *)object forKeyPath:(NSString *)keyPath;
+- (void)removeObservationOfObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths;
 
 - (void)removeAllObservations;
 
-- (BOOL)isObservingObject:(NSObject *)object forKeyPath:(NSString *)keyPath;
+- (BOOL)isObservingObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths;
 
 @end

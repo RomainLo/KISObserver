@@ -8,9 +8,8 @@
 
 #import <XCTest/XCTest.h>
 
+#import "KISBlockObservation.h"
 #import "KISObserver.h"
-#import "KISObservation.h"
-#import <objc/runtime.h>
 
 NSString * const kObserverKVOProperty = @"kvoProperty";
 
@@ -18,7 +17,7 @@ NSString * const kObserverKVOProperty = @"kvoProperty";
 
 @property (nonatomic, strong) KISObserver *observer;
 
-@property (nonatomic, strong) KISObservation *observation;
+@property (nonatomic, strong) KISBlockObservation *observation;
 
 @property (nonatomic, assign) NSUInteger notificationCount;
 
@@ -34,7 +33,7 @@ NSString * const kObserverKVOProperty = @"kvoProperty";
 	self.notificationCount = 0;
 	self.kvoProperty = NO;
 	self.observer = [[KISObserver alloc] init];
-	self.observation = [[KISBlockObservation alloc] initWithObserver:self observed:self options:0 keyPath:kObserverKVOProperty block:^(__weak id observed, NSDictionary *change) {
+	self.observation = [[KISBlockObservation alloc] initWithObserver:self observed:self options:0 keyPaths:kObserverKVOProperty block:^(__weak id observed, NSDictionary *change) {
 		self.notificationCount += 1;
 	}];
 }
@@ -42,34 +41,32 @@ NSString * const kObserverKVOProperty = @"kvoProperty";
 - (void)testAddObservations
 {
 	[self.observer addObservation:self.observation];
-	[self.observer addObservation:self.observation];
-	XCTAssertEqual(self.observer.observations.count, 2U, @"Should have two elements that we have just added.");
+	XCTAssertEqual(self.observer.observations.count, 1U, @"Should have two elements that we have just added.");
 }
 
 - (void)testNotification
 {
 	[self.observer addObservation:self.observation];
-	[self.observer addObservation:self.observation];
+	self.observation = nil; // the observer should retain the observation.
+	
 	self.kvoProperty = YES;
-	XCTAssertEqual(self.notificationCount, 2U, @"Should be notified twice since the observation is add twice.");
+	XCTAssertEqual(self.notificationCount, 1U, @"Should be notified twice since the observation is add twice.");
 }
 
 - (void)testRemove
 {
 	[self.observer addObservation:self.observation];
-	[self.observer addObservation:self.observation];
-	[self.observer removeObservationOfObject:self.observation.observed forKeyPath:self.observation.keyPath];
-	XCTAssertEqual(self.observer.observations.count, 1U, @"Should have only the element.");
+	[self.observer removeObservationOfObject:self.observation.observed forKeyPaths:self.observation.keyPaths];
+	XCTAssertEqual(self.observer.observations.count, 0U, @"Should have only the element.");
 }
 
 - (void)testRemoveUnknownObservation
 {
-	XCTAssertNoThrow([self.observer removeObservationOfObject:self.observation.observed forKeyPath:self.observation.keyPath]);
+	XCTAssertNoThrow([self.observer removeObservationOfObject:self.observation.observed forKeyPaths:self.observation.keyPaths]);
 }
 
 - (void)testRemoveAll
 {
-	[self.observer addObservation:self.observation];
 	[self.observer addObservation:self.observation];
 	[self.observer removeAllObservations];
 	XCTAssertEqual(self.observer.observations.count, 0U, @"Should have only the element.");
@@ -77,7 +74,9 @@ NSString * const kObserverKVOProperty = @"kvoProperty";
 
 - (void)testDeallocShouldRemoveAll
 {
-	self.observer = nil; // we dealloc the observer
+	[self.observer addObservation:self.observation];
+	self.observation = nil; // the observer should retain the observation.
+	self.observer = nil; // Anything should retain the observation.
 	self.kvoProperty = YES; // Try to trigger the KVO
 	XCTAssertEqual(self.notificationCount, 0U, @"Shouldn't be notified by the notification because it is deallocated.");
 }
