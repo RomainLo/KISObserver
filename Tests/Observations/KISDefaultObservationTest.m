@@ -8,16 +8,17 @@
 
 #import <XCTest/XCTest.h>
 
+#import <OCMock/OCMock.h>
+
 #import "KISDefaultObservation.h"
 
-NSString * const kDefaultKVOPropertyPath = @"kvoProperty";
-NSString * const kDefault3KeyPaths = @"kvoProperty|kvoProperty1|kvoProperty2";
+#import "KISKvoObject.h"
 
 @interface KISDefaultObservationTest : XCTestCase
 
-@property (nonatomic, assign) BOOL kvoProperty;
+@property (nonatomic, strong) KISKvoObject *observed;
 
-@property (nonatomic, assign) NSUInteger notificationCount;
+@property (nonatomic, strong) id observer;
 
 @end
 
@@ -26,32 +27,31 @@ NSString * const kDefault3KeyPaths = @"kvoProperty|kvoProperty1|kvoProperty2";
 - (void)setUp
 {
 	[super setUp];
-	self.notificationCount = 0;
+	self.observer = [OCMockObject mockForClass:[KISKvoObject class]];
+	self.observed = [KISKvoObject new];
 }
 
 - (void)testNotification
 {
-   KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self observed:self options:0 keyPaths:kDefaultKVOPropertyPath];
-	self.kvoProperty = YES;
-	XCTAssertEqual(self.notificationCount, 1U, @"Should have received one notification");
+   KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self.observer observed:self.observed options:0 keyPaths:kKvoPropertyKeyPath1];
+	[[self.observer expect] observeValueForKeyPath:kKvoPropertyKeyPath1 ofObject:self.observed change:[OCMArg any] context:(__bridge void *)(kKISObservationContext)];
+	self.observed.kvoProperty1 += 1;
+	[self.observer verify];
 }
 
 - (void)testNotificationWithManyKeyPaths
 {
-   KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self observed:self options:0 keyPaths:kDefault3KeyPaths];
-	self.kvoProperty = YES;
-	XCTAssertEqual(self.notificationCount, 1U, @"Should have received one notification");
+   KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self.observer observed:self.observed options:0 keyPaths:kKvoPropertyKeyPaths];
+	[[self.observer expect] observeValueForKeyPath:kKvoPropertyKeyPath1 ofObject:self.observed change:[OCMArg any] context:(__bridge void *)(kKISObservationContext)];
+	self.observed.kvoProperty1 += 1;
+	[self.observer verify];
 }
 
 - (void)testNotificationWithObservingOptionInitial
 {
-   KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionInitial keyPaths:kDefaultKVOPropertyPath];
-	XCTAssertEqual(self.notificationCount, 1U, @"Should have received one notification");
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	self.notificationCount += 1;
+	[[self.observer expect] observeValueForKeyPath:kKvoPropertyKeyPaths ofObject:self.observed change:[OCMArg any] context:(__bridge void *)(kKISObservationContext)];
+   KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionInitial keyPaths:kKvoPropertyKeyPaths];
+	[self.observer verify];
 }
 
 @end

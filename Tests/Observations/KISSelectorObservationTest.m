@@ -8,15 +8,17 @@
 
 #import <XCTest/XCTest.h>
 
+#import <OCMock/OCMock.h>
+
 #import "KISSelectorObservation.h"
 
-NSString * const kSelectorKVOPropertyPath = @"kvoProperty";
+#import "KISKvoObject.h"
 
 @interface KISSelectorObservationTest : XCTestCase
 
-@property (nonatomic, assign) BOOL kvoProperty;
+@property (nonatomic, strong) KISKvoObject *observed;
 
-@property (nonatomic, assign) NSUInteger selectorMark;
+@property (nonatomic, strong) id observer;
 
 @end
 
@@ -25,60 +27,47 @@ NSString * const kSelectorKVOPropertyPath = @"kvoProperty";
 - (void)setUp
 {
 	[super setUp];
-	self.selectorMark = 0;
+	self.observer = [OCMockObject mockForClass:[KISKvoObject class]];
+	self.observed = [KISKvoObject new];
 }
 
 - (void)testInitializer
 {
-   XCTAssertNoThrow([[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(_selector)]);
+   XCTAssertNoThrow([[KISSelectorObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notify)]);
 }
 
 - (void)testInitializerWithUnknownSelector
 {
-   XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(addObjectsFromArray:)], @"Should send an exception because the selector is unknown on the object.");
+   XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(addObjectsFromArray:)], @"Should send an exception because the selector is unknown on the object.");
 }
 
 - (void)testInitializerWithTooManyArgumentSelector
 {
-   XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(_selectorWithObject:change:whatever:)], @"Should send an exception because the selector has more than two parameters.");
+	XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(_selectorWithObject:change:whatever:)], @"Should send an exception because the selector has more than two parameters.");
 }
 
 - (void)testNotificationWithoutArgument
 {
-	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(_selector)];
-	self.kvoProperty = YES;
-	XCTAssertTrue(self.selectorMark & 1, @"Should have call the selector without parameter.");
+	[[self.observer expect] notify];
+	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notify)];
+	self.observed.kvoProperty1 = 42;
+	[self.observer verify];
 }
 
 - (void)testNotificationWithOneArgument
 {
-	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(_selectorWithObject:)];
-	self.kvoProperty = YES;
-	XCTAssertTrue(self.selectorMark & (1 << 1), @"Should have call the selector with one parameter.");
+	[[self.observer expect] notifyWithObserved:self.observed];
+	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notifyWithObserved:)];
+	self.observed.kvoProperty1 = 42;
+	[self.observer verify];
 }
 
 - (void)testNotificationWithTwoArguments
 {
-	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionNew keyPaths:kSelectorKVOPropertyPath selector:@selector(_selectorWithObject:change:)];
-	self.kvoProperty = YES;
-	XCTAssertTrue(self.selectorMark & (1 << 2), @"Should have call the selector with two parameters.");
-}
-
-- (void)_selector
-{
-	self.selectorMark = self.selectorMark | 1;
-}
-
-- (void)_selectorWithObject:(id)object
-{
-	XCTAssertEqual(self, object, @"Should give self in parameter.");
-	self.selectorMark = self.selectorMark | (1 << 1);
-}
-
-- (void)_selectorWithObject:(id)object change:(NSDictionary *)change
-{
-	XCTAssertEqual(self, object, @"Should give self in parameter.");
-	self.selectorMark = self.selectorMark | (1 << 2);
+	[[self.observer expect] notifyWithObserved:self.observed change:[OCMArg any]];
+	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notifyWithObserved:change:)];
+	self.observed.kvoProperty1 = 42;
+	[self.observer verify];
 }
 
 - (void)_selectorWithObject:(id)object change:(NSDictionary *)change whatever:(id)whatever

@@ -8,20 +8,21 @@
 
 #import <XCTest/XCTest.h>
 
+#import <OCMock/OCMock.h>
+
 #import "KISBlockObservation.h"
 #import "KISObserver.h"
-
-NSString * const kObserverKVOProperty = @"kvoProperty";
+#import "KISKvoObject.h"
 
 @interface KISObserverTest : XCTestCase
+
+@property (nonatomic, strong) KISKvoObject *observed;
 
 @property (nonatomic, strong) KISObserver *observer;
 
 @property (nonatomic, strong) KISBlockObservation *observation;
 
 @property (nonatomic, assign) NSUInteger notificationCount;
-
-@property (nonatomic, assign) BOOL kvoProperty;
 
 @end
 
@@ -31,9 +32,9 @@ NSString * const kObserverKVOProperty = @"kvoProperty";
 {
 	[super setUp];
 	self.notificationCount = 0;
-	self.kvoProperty = NO;
+	self.observed = [KISKvoObject new];
 	self.observer = [[KISObserver alloc] init];
-	self.observation = [[KISBlockObservation alloc] initWithObserver:self observed:self options:0 keyPaths:kObserverKVOProperty block:^(__weak id observed, NSDictionary *change) {
+	self.observation = [[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:0 keyPaths:kKvoPropertyKeyPath1 block:^(__weak id observed, NSDictionary *change) {
 		self.notificationCount += 1;
 	}];
 }
@@ -49,7 +50,7 @@ NSString * const kObserverKVOProperty = @"kvoProperty";
 	[self.observer addObservation:self.observation];
 	self.observation = nil; // the observer should retain the observation.
 	
-	self.kvoProperty = YES;
+	self.observed.kvoProperty1 = YES;
 	XCTAssertEqual(self.notificationCount, 1U, @"Should be notified twice since the observation is add twice.");
 }
 
@@ -77,8 +78,26 @@ NSString * const kObserverKVOProperty = @"kvoProperty";
 	[self.observer addObservation:self.observation];
 	self.observation = nil; // the observer should retain the observation.
 	self.observer = nil; // Anything should retain the observation.
-	self.kvoProperty = YES; // Try to trigger the KVO
+	self.observed.kvoProperty1 = YES; // Try to trigger the KVO
 	XCTAssertEqual(self.notificationCount, 0U, @"Shouldn't be notified by the notification because it is deallocated.");
+}
+
+- (void)testIsObserving
+{
+	[self.observer addObservation:self.observation];
+	XCTAssertTrue([self.observer isObservingObject:self.observation.observed forKeyPaths:kKvoPropertyKeyPath1], @"Should observe the given object.");
+}
+
+- (void)testIsNOTObservingKeyPath
+{
+	[self.observer addObservation:self.observation];
+	XCTAssertFalse([self.observer isObservingObject:self.observation.observed forKeyPaths:kKvoPropertyKeyPaths], @"Should NOT observe this path.");
+}
+
+- (void)testIsNOTObservingObject
+{
+	[self.observer addObservation:self.observation];
+	XCTAssertFalse([self.observer isObservingObject:self forKeyPaths:kKvoPropertyKeyPath1], @"Should NOT observe this object.");
 }
 
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EAF1A6C39E4C4BF2839D9E59 /* libPods-KISObserverTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 765D608073924F4C93EA7ADB /* libPods-KISObserverTests.a */; };
 		FF25A6C31878D688004A704F /* NSObject+KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6C21878D688004A704F /* NSObject+KISObserver.m */; };
 		FF25A6C41879A93B004A704F /* KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF647057186F8E66004E2362 /* KISObserver.m */; };
 		FF25A6D51879B521004A704F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFFC186F8B770090428E /* XCTest.framework */; };
@@ -15,7 +16,8 @@
 		FF25A6E71879B6EC004A704F /* KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF647057186F8E66004E2362 /* KISObserver.m */; };
 		FF25A6E91879B73A004A704F /* NSObject+KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6C21878D688004A704F /* NSObject+KISObserver.m */; };
 		FF25A6F0187A039F004A704F /* KISObserverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6EF187A039F004A704F /* KISObserverTest.m */; };
-		FF2DAC0F18833DB2000A3794 /* NSObjeckKISObserverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC0E18833DB2000A3794 /* NSObjeckKISObserverTest.m */; };
+		FF2DAC0F18833DB2000A3794 /* NSObjectKISObserverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC0E18833DB2000A3794 /* NSObjectKISObserverTest.m */; };
+		FF2DAC1618847602000A3794 /* KISKvoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC1518847602000A3794 /* KISKvoObject.m */; };
 		FF7AFEF41883274700DDFCEE /* KISObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFEF31883274700DDFCEE /* KISObservation.m */; };
 		FF7AFEF71883289F00DDFCEE /* KISDefaultObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFEF61883289F00DDFCEE /* KISDefaultObservation.m */; };
 		FF7AFEFA1883293A00DDFCEE /* KISBlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFEF91883293A00DDFCEE /* KISBlockObservation.m */; };
@@ -54,13 +56,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		307E649ACABC490DAF755F64 /* Pods-KISObserverTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KISObserverTests.xcconfig"; path = "Project/Pods/Pods-KISObserverTests.xcconfig"; sourceTree = "<group>"; };
+		765D608073924F4C93EA7ADB /* libPods-KISObserverTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KISObserverTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF25A6C11878D688004A704F /* NSObject+KISObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KISObserver.h"; sourceTree = "<group>"; };
 		FF25A6C21878D688004A704F /* NSObject+KISObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KISObserver.m"; sourceTree = "<group>"; };
 		FF25A6CD1879B01C004A704F /* KISObserverTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "KISObserverTests-Info.plist"; sourceTree = "<group>"; };
 		FF25A6D41879B521004A704F /* KISObserverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KISObserverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF25A6EA1879B7D2004A704F /* KISObserverTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KISObserverTests-Prefix.pch"; sourceTree = "<group>"; };
 		FF25A6EF187A039F004A704F /* KISObserverTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObserverTest.m; sourceTree = "<group>"; };
-		FF2DAC0E18833DB2000A3794 /* NSObjeckKISObserverTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjeckKISObserverTest.m; sourceTree = "<group>"; };
+		FF2DAC0E18833DB2000A3794 /* NSObjectKISObserverTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectKISObserverTest.m; sourceTree = "<group>"; };
+		FF2DAC1418847602000A3794 /* KISKvoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISKvoObject.h; sourceTree = "<group>"; };
+		FF2DAC1518847602000A3794 /* KISKvoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISKvoObject.m; sourceTree = "<group>"; };
+		FF2DAC1918847E76000A3794 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		FF64704D186F8DB7004E2362 /* KISObserver-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KISObserver-Prefix.pch"; sourceTree = "<group>"; };
 		FF647050186F8DB7004E2362 /* KISObserver.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = KISObserver.podspec; sourceTree = "<group>"; };
 		FF647051186F8DB7004E2362 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -94,6 +101,7 @@
 				FF25A6D51879B521004A704F /* XCTest.framework in Frameworks */,
 				FF25A6D71879B521004A704F /* UIKit.framework in Frameworks */,
 				FF25A6D61879B521004A704F /* Foundation.framework in Frameworks */,
+				EAF1A6C39E4C4BF2839D9E59 /* libPods-KISObserverTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,13 +119,31 @@
 		FF25A6CB1879B01C004A704F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				FF2DAC1318847602000A3794 /* Mocks */,
 				FF7AFF02188332BF00DDFCEE /* Observations */,
 				FF25A6CD1879B01C004A704F /* KISObserverTests-Info.plist */,
 				FF25A6EA1879B7D2004A704F /* KISObserverTests-Prefix.pch */,
 				FF25A6EF187A039F004A704F /* KISObserverTest.m */,
-				FF2DAC0E18833DB2000A3794 /* NSObjeckKISObserverTest.m */,
+				FF2DAC0E18833DB2000A3794 /* NSObjectKISObserverTest.m */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		FF2DAC1318847602000A3794 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FF2DAC1418847602000A3794 /* KISKvoObject.h */,
+				FF2DAC1518847602000A3794 /* KISKvoObject.m */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		FF2DAC1818847E76000A3794 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				FF2DAC1918847E76000A3794 /* Podfile */,
+			);
+			path = Project;
 			sourceTree = "<group>";
 		};
 		FF647048186F8DB7004E2362 /* Classes */ = {
@@ -161,15 +187,17 @@
 		FFFABFE2186F8B770090428E = {
 			isa = PBXGroup;
 			children = (
-				FF647048186F8DB7004E2362 /* Classes */,
-				FFFABFED186F8B770090428E /* Frameworks */,
-				FF64704D186F8DB7004E2362 /* KISObserver-Prefix.pch */,
-				FF647050186F8DB7004E2362 /* KISObserver.podspec */,
 				FF647051186F8DB7004E2362 /* LICENSE */,
-				FFFABFEC186F8B770090428E /* Products */,
 				FF647052186F8DB7004E2362 /* Rakefile */,
 				FF647053186F8DB7004E2362 /* README.md */,
+				FF64704D186F8DB7004E2362 /* KISObserver-Prefix.pch */,
+				FF647050186F8DB7004E2362 /* KISObserver.podspec */,
+				FF647048186F8DB7004E2362 /* Classes */,
+				FFFABFED186F8B770090428E /* Frameworks */,
+				FFFABFEC186F8B770090428E /* Products */,
+				FF2DAC1818847E76000A3794 /* Project */,
 				FF25A6CB1879B01C004A704F /* Tests */,
+				307E649ACABC490DAF755F64 /* Pods-KISObserverTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,6 +216,7 @@
 				FFFABFEE186F8B770090428E /* Foundation.framework */,
 				FFFABFFC186F8B770090428E /* XCTest.framework */,
 				FFFABFFF186F8B770090428E /* UIKit.framework */,
+				765D608073924F4C93EA7ADB /* libPods-KISObserverTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF25A6E31879B521004A704F /* Build configuration list for PBXNativeTarget "KISObserverTests" */;
 			buildPhases = (
+				48DFDB8398F34D4BBC95EBC2 /* Check Pods Manifest.lock */,
 				FF25A6D01879B521004A704F /* Sources */,
 				FF25A6D11879B521004A704F /* Frameworks */,
 				FF25A6D21879B521004A704F /* Resources */,
+				B4CC7B78ECE64B948C88A7E9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,12 +303,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		48DFDB8398F34D4BBC95EBC2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B4CC7B78ECE64B948C88A7E9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Project/Pods/Pods-KISObserverTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FF25A6D01879B521004A704F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FF7AFF0C1883331100DDFCEE /* KISDefaultObservationTest.m in Sources */,
+				FF2DAC1618847602000A3794 /* KISKvoObject.m in Sources */,
 				FF7AFF0018832ED500DDFCEE /* KISBlockObservation.m in Sources */,
 				FF7AFF0D1883331100DDFCEE /* KISSelectorObservationTest.m in Sources */,
 				FF7AFF0A1883330700DDFCEE /* KISObservationBaseTest.m in Sources */,
@@ -287,7 +352,7 @@
 				FF7AFF0B1883331100DDFCEE /* KISBlockObservationTest.m in Sources */,
 				FF25A6F0187A039F004A704F /* KISObserverTest.m in Sources */,
 				FF25A6E91879B73A004A704F /* NSObject+KISObserver.m in Sources */,
-				FF2DAC0F18833DB2000A3794 /* NSObjeckKISObserverTest.m in Sources */,
+				FF2DAC0F18833DB2000A3794 /* NSObjectKISObserverTest.m in Sources */,
 				FF7AFEFE18832ED500DDFCEE /* KISObservation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +383,7 @@
 /* Begin XCBuildConfiguration section */
 		FF25A6E41879B521004A704F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 307E649ACABC490DAF755F64 /* Pods-KISObserverTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -339,6 +405,7 @@
 		};
 		FF25A6E51879B521004A704F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 307E649ACABC490DAF755F64 /* Pods-KISObserverTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (

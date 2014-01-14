@@ -1,7 +1,10 @@
-pod "KISObserver", :path => "../KISObserver.podspec"
+#pod "KISObserver", :path => "../KISObserver.podspec"
 
-target "Demo" do
+xcodeproj '../KISObserver.xcodeproj'
+
+target "KISObserver" do
 end
 
-target "DemoTests" do
+target "KISObserverTests" do
+	pod 'OCMock'
 end

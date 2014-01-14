@@ -10,49 +10,52 @@
 
 #import "KISObservation.h"
 
-NSString * const kKVOPropertyPath = @"kvoProperty";
-NSString * const k3KeyPaths = @"kvoProperty|kvoProperty1|kvoProperty2";
+#import "KISKvoObject.h"
 
 @interface KISObservationBaseTest : XCTestCase
+
+@property (nonatomic, strong) KISKvoObject *observer;
+
+@property (nonatomic, strong) KISKvoObject *observed;
 
 @end
 
 @implementation KISObservationBaseTest
 
+- (void)setUp
+{
+	self.observer = [KISKvoObject new];
+	self.observed = [KISKvoObject new];
+}
+
 - (void)testInitializer
 {
-   XCTAssertNoThrow([[KISObservationBase alloc] initWithObserver:self observed:self options:0 keyPaths:kKVOPropertyPath]);
+   XCTAssertNoThrow([[KISObservationBase alloc] initWithObserver:self.observed observed:self.observed options:0 keyPaths:kKvoPropertyKeyPath1]);
 }
 
 - (void)testInitializerWithNilObserver
 {
-   XCTAssertThrows([[KISObservationBase alloc] initWithObserver:nil observed:self options:0 keyPaths:kKVOPropertyPath]);
+   XCTAssertThrows([[KISObservationBase alloc] initWithObserver:nil observed:self.observed options:0 keyPaths:kKvoPropertyKeyPath1]);
 }
 
 - (void)testInitializerWithNilObserved
 {
-   XCTAssertThrows([[KISObservationBase alloc] initWithObserver:self observed:nil options:0 keyPaths:kKVOPropertyPath]);
+   XCTAssertThrows([[KISObservationBase alloc] initWithObserver:self.observer observed:nil options:0 keyPaths:kKvoPropertyKeyPath1]);
 }
 
 - (void)testInitializerWithEmptyKeyPath
 {
-   XCTAssertThrows([[KISObservationBase alloc] initWithObserver:self observed:nil options:0 keyPaths:@""]);
+   XCTAssertThrows([[KISObservationBase alloc] initWithObserver:self.observed observed:self.observed options:0 keyPaths:@""]);
 }
 
 - (void)testInitializerSetting
 {
-	KISObservationBase *observation = [[KISObservationBase alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionOld keyPaths:kKVOPropertyPath];
-	XCTAssertEqual(self, observation.observer, @"The observer should be self");
-	XCTAssertEqual(self, observation.observed, @"The observed should be self");
+	KISObservationBase *observation = [[KISObservationBase alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionOld keyPaths:kKvoPropertyKeyPaths];
+	XCTAssertEqual(self.observer, observation.observer, @"The observer should be self");
+	XCTAssertEqual(self.observed, observation.observed, @"The observed should be self");
 	XCTAssertEqual(NSKeyValueObservingOptionOld, observation.options, @"The options should be NSKeyValueObservingOptionOld");
-	XCTAssertEqual(kKVOPropertyPath, observation.keyPaths, @"The keyPath should be kKVOPropertyPath");
+	XCTAssertEqual(kKvoPropertyKeyPaths, observation.keyPaths, @"The keyPath isn't properly set.");
+	XCTAssertEqual(2U, observation.keyPathArray.count, @"The keyPathArray isn't properly set.");
 }
-
-- (void)testInitializerManyKeyPaths
-{
-	KISObservationBase *observation = [[KISObservationBase alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionOld keyPaths:k3KeyPaths];
-	XCTAssertEqual(3U, observation.keyPathArray.count, @"The keyPath should be kKVOPropertyPath");
-}
-
 
 @end

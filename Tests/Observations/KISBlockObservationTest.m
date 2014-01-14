@@ -10,13 +10,11 @@
 
 #import "KISBlockObservation.h"
 
-NSString * const kBlockKVOPropertyPath = @"kvoProperty";
+#import "KISKvoObject.h"
 
 @interface KISBlockObservationTest : XCTestCase
 
-@property (nonatomic, assign) BOOL kvoProperty;
-
-@property (nonatomic, assign) NSUInteger notificationCount;
+@property (nonatomic, strong) KISKvoObject *observed;
 
 @end
 
@@ -25,26 +23,27 @@ NSString * const kBlockKVOPropertyPath = @"kvoProperty";
 - (void)setUp
 {
 	[super setUp];
-	self.notificationCount = 0;
+	self.observed = [KISKvoObject new];
 }
 
 - (void)testInitializer
 {
-	XCTAssertNoThrow([[KISBlockObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionInitial keyPaths:kBlockKVOPropertyPath block:^(__weak id observed, NSDictionary *change) {}], @"Should not throw exception.");
+	XCTAssertNoThrow([[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:NSKeyValueObservingOptionInitial keyPaths:kKvoPropertyKeyPath1 block:^(__weak id observed, NSDictionary *change) {}], @"Should not throw exception.");
 }
 
 - (void)testInitializerWithNilBlock
 {
-	XCTAssertThrows([[KISBlockObservation alloc] initWithObserver:self observed:self options:NSKeyValueObservingOptionInitial keyPaths:kBlockKVOPropertyPath block:nil], @"Should throw an exception because the block is nil.");
+	XCTAssertThrows([[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:NSKeyValueObservingOptionInitial keyPaths:kKvoPropertyKeyPath1 block:nil], @"Should throw an exception because the block is nil.");
 }
 
 - (void)testNotification
 {
-	KISBlockObservation *observation __attribute__((unused)) = [[KISBlockObservation alloc] initWithObserver:self observed:self options:0 keyPaths:kBlockKVOPropertyPath block:^(__weak id observed, NSDictionary *change) {
-		self.notificationCount += 1;
+	__block NSUInteger kvoTriggeredCount = 0;
+	KISBlockObservation *observation __attribute__((unused)) = [[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:0 keyPaths:kKvoPropertyKeyPath1 block:^(__weak id observed, NSDictionary *change) {
+		kvoTriggeredCount += 1;
 	}];
-	self.kvoProperty = YES;
-	XCTAssertEqual(self.notificationCount, 1U, @"The observation should have call the block once.");
+	self.observed.kvoProperty1 = 42;
+	XCTAssertEqual(kvoTriggeredCount, 1U, @"The observation should have call the block once.");
 }
 
 
