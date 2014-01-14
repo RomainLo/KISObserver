@@ -68,6 +68,7 @@
 		FF2DAC1418847602000A3794 /* KISKvoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISKvoObject.h; sourceTree = "<group>"; };
 		FF2DAC1518847602000A3794 /* KISKvoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISKvoObject.m; sourceTree = "<group>"; };
 		FF2DAC1918847E76000A3794 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		FF2DAC1A1885FFEC000A3794 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		FF64704D186F8DB7004E2362 /* KISObserver-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KISObserver-Prefix.pch"; sourceTree = "<group>"; };
 		FF647050186F8DB7004E2362 /* KISObserver.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = KISObserver.podspec; sourceTree = "<group>"; };
 		FF647051186F8DB7004E2362 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -187,6 +188,7 @@
 		FFFABFE2186F8B770090428E = {
 			isa = PBXGroup;
 			children = (
+				FF2DAC1A1885FFEC000A3794 /* .travis.yml */,
 				FF647051186F8DB7004E2362 /* LICENSE */,
 				FF647052186F8DB7004E2362 /* Rakefile */,
 				FF647053186F8DB7004E2362 /* README.md */,
