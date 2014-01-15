@@ -1,2 +1,9 @@
 language: objective-c
-script: xctool -workspace Project/KISObserver.xcworkspace -scheme KISObserver build test -sdk iphonesimulator
+
+before_install:
+  - brew update
+  - brew install xctool
+  - cd Project
+  - pod install
+
+script: xctool -workspace KISObserver.xcworkspace -scheme KISObserver build test -sdk iphonesimulator
