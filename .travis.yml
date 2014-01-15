@@ -1,7 +1,10 @@
 language: objective-c
 
 before_install:
-  - cd Project
-  - pod install
+  - gem install cocoapods -v 0.27.1
+  - brew update
+  - brew uninstall xctool && brew install xctool
 
-script: xctool -workspace KISObserver.xcworkspace -scheme KISObserver build test -sdk iphonesimulator
+xcode_workspace: KISObserver.xcworkspace
+xcode_scheme:    KISObserver
+xcode_sdk:       iphonesimulator
