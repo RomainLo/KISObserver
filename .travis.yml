@@ -1,4 +1,2 @@
 language: objective-c
-
-xcode_project: KISObserver.xcodeproj
-xcode_scheme: KISObserverTests
+script: xctool -workspace Project/KISObserver.xcworkspace -scheme KISObserver build test -sdk iphonesimulator
