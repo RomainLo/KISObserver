@@ -4,6 +4,7 @@ before_install:
   - gem install cocoapods -v 0.27.1
   - brew update
   - brew uninstall xctool && brew install xctool
+  - cd Project && pod install
 
 xcode_workspace: KISObserver.xcworkspace
 xcode_scheme:    KISObserver
