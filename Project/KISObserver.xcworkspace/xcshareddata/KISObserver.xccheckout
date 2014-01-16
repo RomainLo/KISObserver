@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EF3C21E9-B8E8-493E-872B-E519A6B21032</string>
+	<key>IDESourceControlProjectName</key>
+	<string>KISObserver</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3B39CA53-4326-4B28-B29B-E9010C4DFB8F</key>
+		<string>https://github.com/RomainLo/KISObserver.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Project/KISObserver.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3B39CA53-4326-4B28-B29B-E9010C4DFB8F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/RomainLo/KISObserver.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3B39CA53-4326-4B28-B29B-E9010C4DFB8F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3B39CA53-4326-4B28-B29B-E9010C4DFB8F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KISObserver</string>
+		</dict>
+	</array>
+</dict>
+</plist>
