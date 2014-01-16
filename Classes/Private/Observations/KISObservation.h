@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 RomainLo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 extern NSString * const kKISObservationContext;
 
 @protocol KISObservation <NSObject>

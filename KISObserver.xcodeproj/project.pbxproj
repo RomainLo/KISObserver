@@ -9,23 +9,23 @@
 /* Begin PBXBuildFile section */
 		EAF1A6C39E4C4BF2839D9E59 /* libPods-KISObserverTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 765D608073924F4C93EA7ADB /* libPods-KISObserverTests.a */; };
 		FF25A6C31878D688004A704F /* NSObject+KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6C21878D688004A704F /* NSObject+KISObserver.m */; };
-		FF25A6C41879A93B004A704F /* KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF647057186F8E66004E2362 /* KISObserver.m */; };
 		FF25A6D51879B521004A704F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFFC186F8B770090428E /* XCTest.framework */; };
 		FF25A6D61879B521004A704F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFEE186F8B770090428E /* Foundation.framework */; };
 		FF25A6D71879B521004A704F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFFF186F8B770090428E /* UIKit.framework */; };
-		FF25A6E71879B6EC004A704F /* KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF647057186F8E66004E2362 /* KISObserver.m */; };
 		FF25A6E91879B73A004A704F /* NSObject+KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6C21878D688004A704F /* NSObject+KISObserver.m */; };
 		FF25A6F0187A039F004A704F /* KISObserverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF25A6EF187A039F004A704F /* KISObserverTest.m */; };
 		FF2DAC0F18833DB2000A3794 /* NSObjectKISObserverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC0E18833DB2000A3794 /* NSObjectKISObserverTest.m */; };
 		FF2DAC1618847602000A3794 /* KISKvoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC1518847602000A3794 /* KISKvoObject.m */; };
-		FF7AFEF41883274700DDFCEE /* KISObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFEF31883274700DDFCEE /* KISObservation.m */; };
-		FF7AFEF71883289F00DDFCEE /* KISDefaultObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFEF61883289F00DDFCEE /* KISDefaultObservation.m */; };
-		FF7AFEFA1883293A00DDFCEE /* KISBlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFEF91883293A00DDFCEE /* KISBlockObservation.m */; };
-		FF7AFEFD188329DF00DDFCEE /* KISSelectorObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFEFC188329DF00DDFCEE /* KISSelectorObservation.m */; };
-		FF7AFEFE18832ED500DDFCEE /* KISObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFEF31883274700DDFCEE /* KISObservation.m */; };
-		FF7AFEFF18832ED500DDFCEE /* KISDefaultObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFEF61883289F00DDFCEE /* KISDefaultObservation.m */; };
-		FF7AFF0018832ED500DDFCEE /* KISBlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFEF91883293A00DDFCEE /* KISBlockObservation.m */; };
-		FF7AFF0118832ED500DDFCEE /* KISSelectorObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFEFC188329DF00DDFCEE /* KISSelectorObservation.m */; };
+		FF2DAC2818887B98000A3794 /* KISBlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC1E18887B98000A3794 /* KISBlockObservation.m */; };
+		FF2DAC2918887B98000A3794 /* KISBlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC1E18887B98000A3794 /* KISBlockObservation.m */; };
+		FF2DAC2A18887B98000A3794 /* KISDefaultObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC2018887B98000A3794 /* KISDefaultObservation.m */; };
+		FF2DAC2B18887B98000A3794 /* KISDefaultObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC2018887B98000A3794 /* KISDefaultObservation.m */; };
+		FF2DAC2C18887B98000A3794 /* KISObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC2218887B98000A3794 /* KISObservation.m */; };
+		FF2DAC2D18887B98000A3794 /* KISObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC2218887B98000A3794 /* KISObservation.m */; };
+		FF2DAC2E18887B98000A3794 /* KISSelectorObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC2418887B98000A3794 /* KISSelectorObservation.m */; };
+		FF2DAC2F18887B98000A3794 /* KISSelectorObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC2418887B98000A3794 /* KISSelectorObservation.m */; };
+		FF2DAC3018887B98000A3794 /* KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC2718887B98000A3794 /* KISObserver.m */; };
+		FF2DAC3118887B98000A3794 /* KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC2718887B98000A3794 /* KISObserver.m */; };
 		FF7AFF0A1883330700DDFCEE /* KISObservationBaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFF091883330700DDFCEE /* KISObservationBaseTest.m */; };
 		FF7AFF0B1883331100DDFCEE /* KISBlockObservationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFF03188332BF00DDFCEE /* KISBlockObservationTest.m */; };
 		FF7AFF0C1883331100DDFCEE /* KISDefaultObservationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFF04188332BF00DDFCEE /* KISDefaultObservationTest.m */; };
@@ -67,23 +67,23 @@
 		FF2DAC0E18833DB2000A3794 /* NSObjectKISObserverTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectKISObserverTest.m; sourceTree = "<group>"; };
 		FF2DAC1418847602000A3794 /* KISKvoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISKvoObject.h; sourceTree = "<group>"; };
 		FF2DAC1518847602000A3794 /* KISKvoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISKvoObject.m; sourceTree = "<group>"; };
-		FF2DAC1918847E76000A3794 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		FF2DAC1918847E76000A3794 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FF2DAC1A1885FFEC000A3794 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		FF2DAC1D18887B98000A3794 /* KISBlockObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISBlockObservation.h; sourceTree = "<group>"; };
+		FF2DAC1E18887B98000A3794 /* KISBlockObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISBlockObservation.m; sourceTree = "<group>"; };
+		FF2DAC1F18887B98000A3794 /* KISDefaultObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISDefaultObservation.h; sourceTree = "<group>"; };
+		FF2DAC2018887B98000A3794 /* KISDefaultObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISDefaultObservation.m; sourceTree = "<group>"; };
+		FF2DAC2118887B98000A3794 /* KISObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISObservation.h; sourceTree = "<group>"; };
+		FF2DAC2218887B98000A3794 /* KISObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObservation.m; sourceTree = "<group>"; };
+		FF2DAC2318887B98000A3794 /* KISSelectorObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISSelectorObservation.h; sourceTree = "<group>"; };
+		FF2DAC2418887B98000A3794 /* KISSelectorObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISSelectorObservation.m; sourceTree = "<group>"; };
+		FF2DAC2618887B98000A3794 /* KISObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISObserver.h; sourceTree = "<group>"; };
+		FF2DAC2718887B98000A3794 /* KISObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObserver.m; sourceTree = "<group>"; };
 		FF64704D186F8DB7004E2362 /* KISObserver-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KISObserver-Prefix.pch"; sourceTree = "<group>"; };
 		FF647050186F8DB7004E2362 /* KISObserver.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = KISObserver.podspec; sourceTree = "<group>"; };
 		FF647051186F8DB7004E2362 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		FF647052186F8DB7004E2362 /* Rakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Rakefile; sourceTree = "<group>"; };
 		FF647053186F8DB7004E2362 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		FF647056186F8E66004E2362 /* KISObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISObserver.h; sourceTree = "<group>"; };
-		FF647057186F8E66004E2362 /* KISObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObserver.m; sourceTree = "<group>"; };
-		FF7AFEF21883274700DDFCEE /* KISObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISObservation.h; sourceTree = "<group>"; };
-		FF7AFEF31883274700DDFCEE /* KISObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObservation.m; sourceTree = "<group>"; };
-		FF7AFEF51883289F00DDFCEE /* KISDefaultObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISDefaultObservation.h; sourceTree = "<group>"; };
-		FF7AFEF61883289F00DDFCEE /* KISDefaultObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISDefaultObservation.m; sourceTree = "<group>"; };
-		FF7AFEF81883293A00DDFCEE /* KISBlockObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISBlockObservation.h; sourceTree = "<group>"; };
-		FF7AFEF91883293A00DDFCEE /* KISBlockObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISBlockObservation.m; sourceTree = "<group>"; };
-		FF7AFEFB188329DF00DDFCEE /* KISSelectorObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISSelectorObservation.h; sourceTree = "<group>"; };
-		FF7AFEFC188329DF00DDFCEE /* KISSelectorObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISSelectorObservation.m; sourceTree = "<group>"; };
 		FF7AFF03188332BF00DDFCEE /* KISBlockObservationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISBlockObservationTest.m; sourceTree = "<group>"; };
 		FF7AFF04188332BF00DDFCEE /* KISDefaultObservationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISDefaultObservationTest.m; sourceTree = "<group>"; };
 		FF7AFF05188332BF00DDFCEE /* KISSelectorObservationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISSelectorObservationTest.m; sourceTree = "<group>"; };
@@ -147,31 +147,47 @@
 			path = Project;
 			sourceTree = "<group>";
 		};
+		FF2DAC1B18887B98000A3794 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				FF2DAC1C18887B98000A3794 /* Observations */,
+				FF2DAC2518887B98000A3794 /* Observer */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		FF2DAC1C18887B98000A3794 /* Observations */ = {
+			isa = PBXGroup;
+			children = (
+				FF2DAC1D18887B98000A3794 /* KISBlockObservation.h */,
+				FF2DAC1E18887B98000A3794 /* KISBlockObservation.m */,
+				FF2DAC1F18887B98000A3794 /* KISDefaultObservation.h */,
+				FF2DAC2018887B98000A3794 /* KISDefaultObservation.m */,
+				FF2DAC2118887B98000A3794 /* KISObservation.h */,
+				FF2DAC2218887B98000A3794 /* KISObservation.m */,
+				FF2DAC2318887B98000A3794 /* KISSelectorObservation.h */,
+				FF2DAC2418887B98000A3794 /* KISSelectorObservation.m */,
+			);
+			path = Observations;
+			sourceTree = "<group>";
+		};
+		FF2DAC2518887B98000A3794 /* Observer */ = {
+			isa = PBXGroup;
+			children = (
+				FF2DAC2618887B98000A3794 /* KISObserver.h */,
+				FF2DAC2718887B98000A3794 /* KISObserver.m */,
+			);
+			path = Observer;
+			sourceTree = "<group>";
+		};
 		FF647048186F8DB7004E2362 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				FF7AFEF11883272800DDFCEE /* Observations */,
-				FF647056186F8E66004E2362 /* KISObserver.h */,
-				FF647057186F8E66004E2362 /* KISObserver.m */,
+				FF2DAC1B18887B98000A3794 /* Private */,
 				FF25A6C11878D688004A704F /* NSObject+KISObserver.h */,
 				FF25A6C21878D688004A704F /* NSObject+KISObserver.m */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		FF7AFEF11883272800DDFCEE /* Observations */ = {
-			isa = PBXGroup;
-			children = (
-				FF7AFEF21883274700DDFCEE /* KISObservation.h */,
-				FF7AFEF31883274700DDFCEE /* KISObservation.m */,
-				FF7AFEF51883289F00DDFCEE /* KISDefaultObservation.h */,
-				FF7AFEF61883289F00DDFCEE /* KISDefaultObservation.m */,
-				FF7AFEF81883293A00DDFCEE /* KISBlockObservation.h */,
-				FF7AFEF91883293A00DDFCEE /* KISBlockObservation.m */,
-				FF7AFEFB188329DF00DDFCEE /* KISSelectorObservation.h */,
-				FF7AFEFC188329DF00DDFCEE /* KISSelectorObservation.m */,
-			);
-			path = Observations;
 			sourceTree = "<group>";
 		};
 		FF7AFF02188332BF00DDFCEE /* Observations */ = {
@@ -344,18 +360,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF7AFF0C1883331100DDFCEE /* KISDefaultObservationTest.m in Sources */,
+				FF2DAC3118887B98000A3794 /* KISObserver.m in Sources */,
 				FF2DAC1618847602000A3794 /* KISKvoObject.m in Sources */,
-				FF7AFF0018832ED500DDFCEE /* KISBlockObservation.m in Sources */,
 				FF7AFF0D1883331100DDFCEE /* KISSelectorObservationTest.m in Sources */,
 				FF7AFF0A1883330700DDFCEE /* KISObservationBaseTest.m in Sources */,
-				FF7AFF0118832ED500DDFCEE /* KISSelectorObservation.m in Sources */,
-				FF25A6E71879B6EC004A704F /* KISObserver.m in Sources */,
-				FF7AFEFF18832ED500DDFCEE /* KISDefaultObservation.m in Sources */,
+				FF2DAC2918887B98000A3794 /* KISBlockObservation.m in Sources */,
 				FF7AFF0B1883331100DDFCEE /* KISBlockObservationTest.m in Sources */,
+				FF2DAC2D18887B98000A3794 /* KISObservation.m in Sources */,
 				FF25A6F0187A039F004A704F /* KISObserverTest.m in Sources */,
 				FF25A6E91879B73A004A704F /* NSObject+KISObserver.m in Sources */,
+				FF2DAC2B18887B98000A3794 /* KISDefaultObservation.m in Sources */,
 				FF2DAC0F18833DB2000A3794 /* NSObjectKISObserverTest.m in Sources */,
-				FF7AFEFE18832ED500DDFCEE /* KISObservation.m in Sources */,
+				FF2DAC2F18887B98000A3794 /* KISSelectorObservation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,11 +379,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF25A6C41879A93B004A704F /* KISObserver.m in Sources */,
-				FF7AFEF41883274700DDFCEE /* KISObservation.m in Sources */,
-				FF7AFEF71883289F00DDFCEE /* KISDefaultObservation.m in Sources */,
-				FF7AFEFA1883293A00DDFCEE /* KISBlockObservation.m in Sources */,
-				FF7AFEFD188329DF00DDFCEE /* KISSelectorObservation.m in Sources */,
+				FF2DAC2818887B98000A3794 /* KISBlockObservation.m in Sources */,
+				FF2DAC2A18887B98000A3794 /* KISDefaultObservation.m in Sources */,
+				FF2DAC2E18887B98000A3794 /* KISSelectorObservation.m in Sources */,
+				FF2DAC3018887B98000A3794 /* KISObserver.m in Sources */,
+				FF2DAC2C18887B98000A3794 /* KISObservation.m in Sources */,
 				FF25A6C31878D688004A704F /* NSObject+KISObserver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

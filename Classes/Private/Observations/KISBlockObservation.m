@@ -8,6 +8,8 @@
 
 #import "KISBlockObservation.h"
 
+#ifdef NS_BLOCKS_AVAILABLE
+
 @implementation KISBlockObservation
 
 - (instancetype)initWithObserver:(id)observer
@@ -34,3 +36,5 @@
 }
 
 @end
+
+#endif

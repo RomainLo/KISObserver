@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 RomainLo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @protocol KISObservation;
 
 @interface KISObserver : NSObject

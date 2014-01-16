@@ -8,6 +8,8 @@
 
 #import "KISObservation.h"
 
+#ifdef NS_BLOCKS_AVAILABLE
+
 /** The definition of the block that will be call for a notification. */
 typedef void(^KISObserverBlock)(__weak id observed, NSDictionary *change);
 
@@ -23,3 +25,5 @@ typedef void(^KISObserverBlock)(__weak id observed, NSDictionary *change);
 									block:(KISObserverBlock)block;
 
 @end
+
+#endif
