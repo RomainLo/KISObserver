@@ -11,14 +11,14 @@
 #import <OCMock/OCMock.h>
 
 #import "KISBlockObservation.h"
-#import "KISObserver.h"
+#import "KISObservationHandler.h"
 #import "KISKvoObject.h"
 
-@interface KISObserverTest : XCTestCase
+@interface KISObservationHandlerTest : XCTestCase
 
 @property (nonatomic, strong) KISKvoObject *observed;
 
-@property (nonatomic, strong) KISObserver *observer;
+@property (nonatomic, strong) KISObservationHandler *observer;
 
 @property (nonatomic, strong) KISBlockObservation *observation;
 
@@ -26,14 +26,14 @@
 
 @end
 
-@implementation KISObserverTest
+@implementation KISObservationHandlerTest
 
 - (void)setUp
 {
 	[super setUp];
 	self.notificationCount = 0;
 	self.observed = [KISKvoObject new];
-	self.observer = [[KISObserver alloc] init];
+	self.observer = [[KISObservationHandler alloc] init];
 	self.observation = [[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:0 keyPaths:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {
 		self.notificationCount += 1;
 	}];

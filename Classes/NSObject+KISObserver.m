@@ -23,7 +23,7 @@
 
 #import <objc/runtime.h>
 
-#import "KISObserver.h"
+#import "KISObservationHandler.h"
 #import "KISNotification.h"
 
 // Observations
@@ -34,13 +34,13 @@
 
 @implementation NSObject (KISObserver)
 
-- (KISObserver *)kis_observer {
+- (KISObservationHandler *)kis_observer {
 	static NSString *observerKey = @"kis_observer";
 	
-	KISObserver *ob = objc_getAssociatedObject(self, (__bridge const void *)(observerKey));
+	KISObservationHandler *ob = objc_getAssociatedObject(self, (__bridge const void *)(observerKey));
 	
 	if (nil == ob) {
-		ob = [KISObserver new];
+		ob = [KISObservationHandler new];
 		objc_setAssociatedObject(self, (__bridge const void *)(observerKey), ob, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 	}
 	

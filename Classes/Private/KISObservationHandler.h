@@ -21,8 +21,8 @@
 
 @protocol KISObservation;
 
-/** Retains and handles a list of observation. */
-@interface KISObserver : NSObject
+/** Retains and handles a list of observations. */
+@interface KISObservationHandler : NSObject
 
 @property (nonatomic, readonly, copy) NSArray *observations;
 

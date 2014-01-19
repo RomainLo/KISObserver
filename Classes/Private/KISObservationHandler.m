@@ -19,13 +19,13 @@
 // THE SOFTWARE.
 //
 
-#import "KISObserver.h"
+#import "KISObservationHandler.h"
 
 #import "KISObservation.h"
 
 NSString * const kKISObserverContext = @"kis.observer.context";
 
-@implementation KISObserver {
+@implementation KISObservationHandler {
 	NSMutableArray *_observations;
 }
 
