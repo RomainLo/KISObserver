@@ -21,6 +21,8 @@
 
 #import "KISSelectorObservation.h"
 
+#import "KISNotification.h"
+
 @implementation KISSelectorObservation
 
 - (instancetype)initWithObserver:(id)observer
@@ -34,8 +36,8 @@
 	if (self) {
 		NSMethodSignature *methodSignature = [self.observer methodSignatureForSelector:selector];
 		NSInteger numberOfArguments = [methodSignature numberOfArguments];
-		if (!methodSignature || (4 < numberOfArguments))
-			[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The selector should have 2 parameters maximum and be part of the observer." userInfo:nil] raise];
+		if (!methodSignature || (3 < numberOfArguments))
+			[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The selector should have 1 parameters maximum and be part of the observer." userInfo:nil] raise];
 		
 		_selector = selector;
 		[self startObservation];
@@ -54,12 +56,11 @@
 		case 2: // No argument
 			[self.observer performSelector:self.selector];
 			break;
-		case 3: // 1 argument: the observed object
-			[self.observer performSelector:self.selector withObject:self.observed];
+		case 3: { // 1 argument: the observed object
+			KISNotification *notif = [[KISNotification alloc] initWithObservable:object keyPath:keyPath change:change];
+			[self.observer performSelector:self.selector withObject:notif];
 			break;
-		case 4: // 2 argument: the observed object & the change dics
-			[self.observer performSelector:self.selector withObject:self.observed withObject:change];
-			break;
+		}
 		default:
 			NSAssert(NO, @"2 < numberOfArguments < 4");
 	}

@@ -19,6 +19,8 @@
 // THE SOFTWARE.
 //
 
+@class KISNotification;
+
 /**
  A category on NSObject that provides easy-to-use KVO handlings.
  
@@ -79,7 +81,7 @@
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
 				  options:(NSKeyValueObservingOptions)options
-				withBlock:(void(^)(__weak id observed, NSDictionary *change))block;
+				withBlock:(void(^)(KISNotification *notification))block;
 
 /**
  Start to observe keypaths on an object without options and be notified via the given block.
@@ -92,7 +94,7 @@
  */
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
-				withBlock:(void(^)(__weak id observed, NSDictionary *change))block;
+				withBlock:(void(^)(KISNotification *notification))block;
 #endif
 
 /// @name Adding KVO with selectors
@@ -121,10 +123,9 @@
 /**
  Start to observe keypaths on an object without options and be notified via the given selector.
  
- The given selector can have between zero and two arguments:
+ The given selector can have between zero and one arguments:
  - (void)notify;
- - (void)notifyWithObserved:(NSObject *)observed;
- - (void)notifyWithObserved:(NSObject *)observed change:(NSDictionary *)change;
+ - (void)notifyWithObserved:(KISNotification *)notification;
  
  @param object The targeted object of the observation.
  @param keyPaths A list of keypaths (separated by '|') to observe.

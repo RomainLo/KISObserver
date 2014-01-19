@@ -26,6 +26,8 @@
 		FF2DAC2F18887B98000A3794 /* KISSelectorObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC2418887B98000A3794 /* KISSelectorObservation.m */; };
 		FF2DAC3018887B98000A3794 /* KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC2718887B98000A3794 /* KISObserver.m */; };
 		FF2DAC3118887B98000A3794 /* KISObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC2718887B98000A3794 /* KISObserver.m */; };
+		FF2DAC34188C7851000A3794 /* KISNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC33188C7851000A3794 /* KISNotification.m */; };
+		FF2DAC35188C7851000A3794 /* KISNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC33188C7851000A3794 /* KISNotification.m */; };
 		FF7AFF0A1883330700DDFCEE /* KISObservationBaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFF091883330700DDFCEE /* KISObservationBaseTest.m */; };
 		FF7AFF0B1883331100DDFCEE /* KISBlockObservationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFF03188332BF00DDFCEE /* KISBlockObservationTest.m */; };
 		FF7AFF0C1883331100DDFCEE /* KISDefaultObservationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7AFF04188332BF00DDFCEE /* KISDefaultObservationTest.m */; };
@@ -79,6 +81,8 @@
 		FF2DAC2418887B98000A3794 /* KISSelectorObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISSelectorObservation.m; sourceTree = "<group>"; };
 		FF2DAC2618887B98000A3794 /* KISObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISObserver.h; sourceTree = "<group>"; };
 		FF2DAC2718887B98000A3794 /* KISObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObserver.m; sourceTree = "<group>"; };
+		FF2DAC32188C7851000A3794 /* KISNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISNotification.h; sourceTree = "<group>"; };
+		FF2DAC33188C7851000A3794 /* KISNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISNotification.m; sourceTree = "<group>"; };
 		FF64704D186F8DB7004E2362 /* KISObserver-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KISObserver-Prefix.pch"; sourceTree = "<group>"; };
 		FF647050186F8DB7004E2362 /* KISObserver.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = KISObserver.podspec; sourceTree = "<group>"; };
 		FF647051186F8DB7004E2362 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				FF2DAC1B18887B98000A3794 /* Private */,
 				FF25A6C11878D688004A704F /* NSObject+KISObserver.h */,
 				FF25A6C21878D688004A704F /* NSObject+KISObserver.m */,
+				FF2DAC32188C7851000A3794 /* KISNotification.h */,
+				FF2DAC33188C7851000A3794 /* KISNotification.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 				FF2DAC3118887B98000A3794 /* KISObserver.m in Sources */,
 				FF2DAC1618847602000A3794 /* KISKvoObject.m in Sources */,
 				FF7AFF0D1883331100DDFCEE /* KISSelectorObservationTest.m in Sources */,
+				FF2DAC35188C7851000A3794 /* KISNotification.m in Sources */,
 				FF7AFF0A1883330700DDFCEE /* KISObservationBaseTest.m in Sources */,
 				FF2DAC2918887B98000A3794 /* KISBlockObservation.m in Sources */,
 				FF7AFF0B1883331100DDFCEE /* KISBlockObservationTest.m in Sources */,
@@ -383,6 +390,7 @@
 				FF2DAC2A18887B98000A3794 /* KISDefaultObservation.m in Sources */,
 				FF2DAC2E18887B98000A3794 /* KISSelectorObservation.m in Sources */,
 				FF2DAC3018887B98000A3794 /* KISObserver.m in Sources */,
+				FF2DAC34188C7851000A3794 /* KISNotification.m in Sources */,
 				FF2DAC2C18887B98000A3794 /* KISObservation.m in Sources */,
 				FF25A6C31878D688004A704F /* NSObject+KISObserver.m in Sources */,
 			);

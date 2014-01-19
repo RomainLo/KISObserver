@@ -34,7 +34,7 @@
 	self.notificationCount = 0;
 	self.observed = [KISKvoObject new];
 	self.observer = [[KISObserver alloc] init];
-	self.observation = [[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:0 keyPaths:kKvoPropertyKeyPath1 block:^(__weak id observed, NSDictionary *change) {
+	self.observation = [[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:0 keyPaths:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {
 		self.notificationCount += 1;
 	}];
 }

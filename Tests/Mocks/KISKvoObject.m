@@ -19,12 +19,12 @@ NSString *kKvoPropertyKeyPaths = @"kvoProperty1|kvoProperty2";
 	
 }
 
-- (void)notifyWithObserved:(NSObject *)observed
+- (void)notifyWithNotification:(KISNotification *)notification
 {
 
 }
 
-- (void)notifyWithObserved:(NSObject *)observed change:(NSDictionary *)change
+- (void)notifyWithNotification:(KISNotification *)notification whatever:(id)whatever
 {
 
 }

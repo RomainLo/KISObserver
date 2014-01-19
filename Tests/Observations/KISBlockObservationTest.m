@@ -28,7 +28,7 @@
 
 - (void)testInitializer
 {
-	XCTAssertNoThrow([[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:NSKeyValueObservingOptionInitial keyPaths:kKvoPropertyKeyPath1 block:^(__weak id observed, NSDictionary *change) {}], @"Should not throw exception.");
+	XCTAssertNoThrow([[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:NSKeyValueObservingOptionInitial keyPaths:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {}], @"Should not throw exception.");
 }
 
 - (void)testInitializerWithNilBlock
@@ -39,7 +39,7 @@
 - (void)testNotification
 {
 	__block NSUInteger kvoTriggeredCount = 0;
-	KISBlockObservation *observation __attribute__((unused)) = [[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:0 keyPaths:kKvoPropertyKeyPath1 block:^(__weak id observed, NSDictionary *change) {
+	KISBlockObservation *observation __attribute__((unused)) = [[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:0 keyPaths:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {
 		kvoTriggeredCount += 1;
 	}];
 	self.observed.kvoProperty1 = 42;

@@ -24,6 +24,7 @@
 #import <objc/runtime.h>
 
 #import "KISObserver.h"
+#import "KISNotification.h"
 
 // Observations
 #import "KISBlockObservation.h"
@@ -51,7 +52,7 @@
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
 				  options:(NSKeyValueObservingOptions)options
-				withBlock:(void(^)(__weak id observed, NSDictionary *change))block
+				withBlock:(void(^)(KISNotification *notification))block
 {
 	KISBlockObservation *observation = [[KISBlockObservation alloc] initWithObserver:self observed:object options:options keyPaths:keyPaths block:block];
 	[[self kis_observer] addObservation:observation];
@@ -59,7 +60,7 @@
 
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
-				withBlock:(void(^)(__weak id observed, NSDictionary *change))block
+				withBlock:(void(^)(KISNotification *notification))block
 {
 	KISBlockObservation *observation = [[KISBlockObservation alloc] initWithObserver:self observed:object options:0 keyPaths:keyPaths block:block];
 	[[self kis_observer] addObservation:observation];

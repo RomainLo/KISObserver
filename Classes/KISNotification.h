@@ -19,26 +19,32 @@
 // THE SOFTWARE.
 //
 
-#import "KISObservation.h"
+#import <Foundation/Foundation.h>
 
-#import "KISNotification.h"
+@interface KISNotification : NSObject
 
-#ifdef NS_BLOCKS_AVAILABLE
+- (id)initWithObservable:(id)observable keyPath:(NSString *)keyPath change:(NSDictionary *)change;
 
-/** The definition of the block that will be call for a notification. */
-typedef void(^KISObserverBlock)(KISNotification *notification);
+@property (nonatomic, weak, readonly) id observable;
 
-/** Observation that notifies the observer via a block. */
-@interface KISBlockObservation : KISObservationBase
+@property (nonatomic, copy, readonly) NSString *keyPath;
 
-@property (nonatomic, copy, readonly) KISObserverBlock block;
-
-- (instancetype)initWithObserver:(id)observer
-								observed:(id)observed
-								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPaths
-									block:(KISObserverBlock)block;
+@property (nonatomic, copy, readonly) NSDictionary *change;
 
 @end
 
-#endif
+@interface KISNotification (KeyValueChange)
+
+@property (nonatomic, strong, readonly) id newValue;
+
+@property (nonatomic, strong, readonly) id oldValue;
+
+// NSKeyValueChangeSetting use oldValue and newValue.
+
+@property (nonatomic, strong, readonly) NSIndexSet *insertIndexSet;
+
+@property (nonatomic, strong, readonly) NSIndexSet *removeIndexSet;
+
+@property (nonatomic, strong, readonly) NSIndexSet *replaceIndexSet;
+
+@end

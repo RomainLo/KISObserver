@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "KISNotification.h"
+
 extern NSString *kKvoPropertyKeyPath1;
 extern NSString *kKvoPropertyKeyPath2;
 extern NSString *kKvoPropertyKeyPaths;
@@ -20,7 +22,7 @@ extern NSString *kKvoPropertyKeyPaths;
 
 // Selectors
 - (void)notify;
-- (void)notifyWithObserved:(NSObject *)observed;
-- (void)notifyWithObserved:(NSObject *)observed change:(NSDictionary *)change;
+- (void)notifyWithNotification:(KISNotification *)notification;
+- (void)notifyWithNotification:(KISNotification *)notification whatever:(id)whatever;
 
 @end

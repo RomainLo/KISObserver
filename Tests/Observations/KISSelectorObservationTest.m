@@ -11,8 +11,10 @@
 #import <OCMock/OCMock.h>
 
 #import "KISSelectorObservation.h"
+#import "KISNotification.h"
 
 #import "KISKvoObject.h"
+
 
 @interface KISSelectorObservationTest : XCTestCase
 
@@ -43,7 +45,7 @@
 
 - (void)testInitializerWithTooManyArgumentSelector
 {
-	XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(_selectorWithObject:change:whatever:)], @"Should send an exception because the selector has more than two parameters.");
+	XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notifyWithNotification:whatever:)], @"Should send an exception because the selector has more than one parameter.");
 }
 
 - (void)testNotificationWithoutArgument
@@ -56,16 +58,10 @@
 
 - (void)testNotificationWithOneArgument
 {
-	[[self.observer expect] notifyWithObserved:self.observed];
-	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notifyWithObserved:)];
-	self.observed.kvoProperty1 = 42;
-	[self.observer verify];
-}
-
-- (void)testNotificationWithTwoArguments
-{
-	[[self.observer expect] notifyWithObserved:self.observed change:[OCMArg any]];
-	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notifyWithObserved:change:)];
+	[[self.observer expect] notifyWithNotification:[OCMArg checkWithBlock:^BOOL(id obj) {
+		return [obj isKindOfClass:[KISNotification class]];
+	}]];
+	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self.observer observed:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notifyWithNotification:)];
 	self.observed.kvoProperty1 = 42;
 	[self.observer verify];
 }

@@ -45,7 +45,8 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	self.block(self.observed, change);
+	KISNotification *notif = [[KISNotification alloc] initWithObservable:object keyPath:keyPath change:change];
+	self.block(notif);
 }
 
 @end

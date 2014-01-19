@@ -30,7 +30,7 @@
 {
 	__block NSUInteger kvoCount = 0;
 	KISKvoObject *ob = [KISKvoObject new];
-	[ob observeObject:self.observed forKeyPaths:kKvoPropertyKeyPath1 withBlock:^(__weak id observed, NSDictionary *change) {
+	[ob observeObject:self.observed forKeyPaths:kKvoPropertyKeyPath1 withBlock:^(KISNotification *notification) {
 		kvoCount += 1;
 	}];
 	self.observed.kvoProperty1 += 1;
@@ -42,7 +42,7 @@
 	__block NSUInteger kvoCount = 0;
 	@autoreleasepool {
 		KISKvoObject *ob = [KISKvoObject new];
-		[ob observeObject:self.observed forKeyPaths:kKvoPropertyKeyPath1 withBlock:^(__weak id observed, NSDictionary *change) {
+		[ob observeObject:self.observed forKeyPaths:kKvoPropertyKeyPath1 withBlock:^(KISNotification *notification) {
 			kvoCount += 1;
 		}];
 	}
