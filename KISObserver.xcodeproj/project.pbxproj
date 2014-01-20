@@ -32,6 +32,7 @@
 		FF2DAC5B188C93A4000A3794 /* KISObservationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC59188C93A4000A3794 /* KISObservationHandler.m */; };
 		FF2DAC5E188C93E6000A3794 /* KISObservationHandlerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC5C188C93E6000A3794 /* KISObservationHandlerTest.m */; };
 		FF2DAC60188C942C000A3794 /* NSObjectKISObserverTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC5F188C942C000A3794 /* NSObjectKISObserverTest.m */; };
+		FF2DAC63188DDC7A000A3794 /* KISNotificationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2DAC62188DDC7A000A3794 /* KISNotificationTest.m */; };
 		FFFABFEF186F8B770090428E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFABFEE186F8B770090428E /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		FF2DAC5C188C93E6000A3794 /* KISObservationHandlerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObservationHandlerTest.m; sourceTree = "<group>"; };
 		FF2DAC5F188C942C000A3794 /* NSObjectKISObserverTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectKISObserverTest.m; sourceTree = "<group>"; };
 		FF2DAC61188C9477000A3794 /* KISObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KISObserver.h; sourceTree = "<group>"; };
+		FF2DAC62188DDC7A000A3794 /* KISNotificationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISNotificationTest.m; sourceTree = "<group>"; };
 		FF64704D186F8DB7004E2362 /* KISObserver-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KISObserver-Prefix.pch"; sourceTree = "<group>"; };
 		FF647050186F8DB7004E2362 /* KISObserver.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = KISObserver.podspec; sourceTree = "<group>"; };
 		FF647051186F8DB7004E2362 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				FF25A6CD1879B01C004A704F /* KISObserverTests-Info.plist */,
 				FF2DAC1318847602000A3794 /* Mocks */,
 				FF2DAC4C188C9387000A3794 /* Private */,
+				FF2DAC62188DDC7A000A3794 /* KISNotificationTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				FF2DAC54188C9387000A3794 /* KISBlockObservationTest.m in Sources */,
 				FF2DAC2B18887B98000A3794 /* KISDefaultObservation.m in Sources */,
 				FF2DAC60188C942C000A3794 /* NSObjectKISObserverTest.m in Sources */,
+				FF2DAC63188DDC7A000A3794 /* KISNotificationTest.m in Sources */,
 				FF2DAC2F18887B98000A3794 /* KISSelectorObservation.m in Sources */,
 				FF2DAC5E188C93E6000A3794 /* KISObservationHandlerTest.m in Sources */,
 				FF2DAC57188C9387000A3794 /* KISSelectorObservationTest.m in Sources */,

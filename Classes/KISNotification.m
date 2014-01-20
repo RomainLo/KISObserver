@@ -19,30 +19,6 @@
 // THE SOFTWARE.
 //
 
-/**
- 
- @property (nonatomic, strong) NSDictionary *change;
- 
- @property (nonatomic, strong, readonly) id newValue;
- 
- @property (nonatomic, strong, readonly) id oldValue;
- 
- @end
- 
- @interface KISNotification (NSKeyValueChange)
- 
- // NSKeyValueChangeSetting use oldValue and newValue.
- 
- @property (nonatomic, strong, readonly) NSIndexSet *insertIndexSet;
- 
- @property (nonatomic, strong, readonly) NSIndexSet *removeIndexSet;
- 
- @property (nonatomic, strong, readonly) NSIndexSet *replaceIndexSet;
- 
- @end
-
- */
-
 #import "KISNotification.h"
 
 @implementation KISNotification
@@ -51,6 +27,10 @@
 {
 	self = [super init];
 	if (self) {
+		
+		if (!observable || !keyPath.length || !change)
+			[[NSException exceptionWithName:NSInvalidArgumentException reason:@"One of the parameters is nil or empty" userInfo:nil] raise];
+		
 		_observable = observable;
 		_keyPath = [keyPath copy];
 		_change = [change copy];
@@ -89,6 +69,14 @@
 {
 	return [self kvc_indexSetByKeyValueChange:NSKeyValueChangeReplacement];
 }
+
+- (BOOL)isPrior
+{
+	NSNumber *value = self.change[NSKeyValueChangeOldKey];
+	return [value boolValue];
+}
+
+#pragma mark - Private methods
 
 - (NSIndexSet *)kvc_indexSetByKeyValueChange:(NSKeyValueChange)kvc
 {

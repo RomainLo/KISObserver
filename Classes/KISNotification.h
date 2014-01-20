@@ -19,32 +19,46 @@
 // THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
-
+/**
+ Immutable object that represent a KVO notification.
+ */
 @interface KISNotification : NSObject
 
+/** Initializer with the usefull parameters of -observeValueForKeyPath:ofObject:change:context: */
 - (id)initWithObservable:(id)observable keyPath:(NSString *)keyPath change:(NSDictionary *)change;
 
+/** The observed object that has triggered the notification. */
 @property (nonatomic, weak, readonly) id observable;
 
-@property (nonatomic, copy, readonly) NSString *keyPath;
+/** The key path that has change on the observed object. */
+@property (nonatomic, strong, readonly) NSString *keyPath;
 
-@property (nonatomic, copy, readonly) NSDictionary *change;
+/** The related dictionnary of the KVO notification. */
+@property (nonatomic, strong, readonly) NSDictionary *change;
 
 @end
 
+/**
+ Category that provides wrappers on the change dictionnary of a notification.
+ */
 @interface KISNotification (KeyValueChange)
 
+/** The new value of the attribute related to the key path. */
 @property (nonatomic, strong, readonly) id newValue;
 
+/** The old value of the attribute related to the key path. */
 @property (nonatomic, strong, readonly) id oldValue;
 
-// NSKeyValueChangeSetting use oldValue and newValue.
-
+/** The inserted indexes into the to-many relationship that is being observed. */
 @property (nonatomic, strong, readonly) NSIndexSet *insertIndexSet;
 
+/** The removed indexes from the to-many relationship that is being observed. */
 @property (nonatomic, strong, readonly) NSIndexSet *removeIndexSet;
 
+/** The replace indexes into the to-many relationship that is being observed. */
 @property (nonatomic, strong, readonly) NSIndexSet *replaceIndexSet;
+
+/** Say if the notification is prior. */
+@property (nonatomic, assign, readonly, getter = isPrior) BOOL prior;
 
 @end
