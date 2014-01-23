@@ -33,11 +33,11 @@ typedef void(^KISObserverBlock)(KISNotification *notification);
 
 @property (nonatomic, copy, readonly) KISObserverBlock block;
 
-- (instancetype)initWithObserver:(id)observer
-								observed:(id)observed
-								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPaths
-									block:(KISObserverBlock)block;
+- (id)initWithObserver:(id)observer
+				observable:(id)observable
+					options:(NSKeyValueObservingOptions)options
+				  keyPaths:(NSString *)keyPaths
+					  block:(KISObserverBlock)block;
 
 @end
 

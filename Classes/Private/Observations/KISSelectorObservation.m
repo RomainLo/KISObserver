@@ -25,17 +25,17 @@
 
 @implementation KISSelectorObservation
 
-- (instancetype)initWithObserver:(id)observer
-								observed:(id)observed
-								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPaths
-								selector:(SEL)selector
+- (id)initWithObserver:(id)observer
+				observable:(id)observable
+					options:(NSKeyValueObservingOptions)options
+				  keyPaths:(NSString *)keyPaths
+				  selector:(SEL)selector
 {
-	self = [super initWithObserver:observer observed:observed options:options keyPaths:keyPaths];
+	self = [super initWithObserver:observer observable:observable options:options keyPaths:keyPaths];
 	
 	if (self) {
-		NSMethodSignature *methodSignature = [self.observer methodSignatureForSelector:selector];
-		NSInteger numberOfArguments = [methodSignature numberOfArguments];
+		NSMethodSignature * const methodSignature = [self.observer methodSignatureForSelector:selector];
+		const NSInteger numberOfArguments = [methodSignature numberOfArguments];
 		if (!methodSignature || (3 < numberOfArguments))
 			[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The selector should have 1 parameters maximum and be part of the observer." userInfo:nil] raise];
 		
@@ -48,8 +48,8 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	NSMethodSignature *methodSignature = [self.observer methodSignatureForSelector:self.selector];
-	NSInteger numberOfArguments = [methodSignature numberOfArguments];
+	NSMethodSignature * const methodSignature = [self.observer methodSignatureForSelector:self.selector];
+	const NSInteger numberOfArguments = [methodSignature numberOfArguments];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 	switch (numberOfArguments) {
@@ -57,7 +57,7 @@
 			[self.observer performSelector:self.selector];
 			break;
 		case 3: { // 1 argument: the observed object
-			KISNotification *notif = [[KISNotification alloc] initWithObservable:object keyPath:keyPath change:change];
+			KISNotification * const notif = [[KISNotification alloc] initWithObservable:object keyPath:keyPath change:change];
 			[self.observer performSelector:self.selector withObject:notif];
 			break;
 		}

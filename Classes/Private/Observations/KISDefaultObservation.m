@@ -23,12 +23,12 @@
 
 @implementation KISDefaultObservation
 
-- (instancetype)initWithObserver:(id)observer
-								observed:(id)observed
-								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPaths
+- (id)initWithObserver:(id)observer
+				observable:(id)observable
+					options:(NSKeyValueObservingOptions)options
+				  keyPaths:(NSString *)keyPaths
 {
-	self = [super initWithObserver:observer observed:observed options:options keyPaths:keyPaths];
+	self = [super initWithObserver:observer observable:observable options:options keyPaths:keyPaths];
 	if (self) {
 		[self startObservation];
 	}

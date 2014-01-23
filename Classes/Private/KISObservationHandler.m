@@ -64,7 +64,7 @@ NSString * const kKISObserverContext = @"kis.observer.context";
 
 - (void)removeObservationOfObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths
 {
-	NSUInteger index = [self _indexOfObservationWithObserved:object keyPaths:keyPaths];
+	const NSUInteger index = [self _indexOfObservationWithObserved:object keyPaths:keyPaths];
 	if (NSNotFound != index) {
 		[_observations removeObjectAtIndex:index];
 	}
@@ -77,7 +77,7 @@ NSString * const kKISObserverContext = @"kis.observer.context";
 
 - (BOOL)isObservingObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths
 {
-	NSUInteger index = [self _indexOfObservationWithObserved:object keyPaths:keyPaths];
+	const NSUInteger index = [self _indexOfObservationWithObserved:object keyPaths:keyPaths];
 	return index != NSNotFound;
 }
 
@@ -85,8 +85,8 @@ NSString * const kKISObserverContext = @"kis.observer.context";
 
 - (NSUInteger)_indexOfObservationWithObserved:(id)object keyPaths:(NSString *)keyPaths
 {
-	NSUInteger index = [_observations indexOfObjectPassingTest:^BOOL(id<KISObservation> observation, NSUInteger idx, BOOL *stop) {
-		return (observation.observed == object) && (0 == [observation.keyPaths compare:keyPaths]);
+	const NSUInteger index = [_observations indexOfObjectPassingTest:^BOOL(id<KISObservation> observation, NSUInteger idx, BOOL *stop) {
+		return (observation.observable == object) && (0 == [observation.keyPaths compare:keyPaths]);
 	}];
 	return index;
 }

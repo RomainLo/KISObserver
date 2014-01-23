@@ -45,13 +45,13 @@
 
 - (id)newValue
 {
-	id value = self.change[NSKeyValueChangeNewKey];
+	const id value = self.change[NSKeyValueChangeNewKey];
 	return (value != [NSNull null]) ? value : nil;
 }
 
 - (id)oldValue
 {
-	id value = self.change[NSKeyValueChangeOldKey];
+	const id value = self.change[NSKeyValueChangeOldKey];
 	return (value != [NSNull null]) ? value : nil;
 }
 
@@ -72,16 +72,22 @@
 
 - (BOOL)isPrior
 {
-	NSNumber *value = self.change[NSKeyValueChangeOldKey];
+	NSNumber * const value = self.change[NSKeyValueChangeNotificationIsPriorKey];
 	return [value boolValue];
+}
+
+- (BOOL)isSetting
+{
+	NSNumber * const value = self.change[NSKeyValueChangeKindKey];
+	return [value unsignedIntegerValue] == NSKeyValueChangeSetting;
 }
 
 #pragma mark - Private methods
 
 - (NSIndexSet *)kvc_indexSetByKeyValueChange:(NSKeyValueChange)kvc
 {
-	BOOL isGoodKvc = [self.change[NSKeyValueChangeKindKey] intValue] == kvc;
-	NSIndexSet *kvcIndexSet = self.change[NSKeyValueChangeIndexesKey];
+	const BOOL isGoodKvc = [self.change[NSKeyValueChangeKindKey] intValue] == kvc;
+	NSIndexSet * const kvcIndexSet = self.change[NSKeyValueChangeIndexesKey];
 	return (isGoodKvc && kvcIndexSet.count) ? kvcIndexSet : nil;
 }
 

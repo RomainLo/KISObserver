@@ -21,7 +21,7 @@
 
 @protocol KISObservation;
 
-/** Retains and handles a list of observations. */
+/** Retain and handle a list of observations. */
 @interface KISObservationHandler : NSObject
 
 @property (nonatomic, readonly, copy) NSArray *observations;
@@ -35,7 +35,7 @@
 /** Remove all observation. */
 - (void)removeAllObservations;
 
-/** Say if it contains an observation on a object for given keypaths. */
+/** Say YES if it contains an observation on a object for given keypaths. */
 - (BOOL)isObservingObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths;
 
 @end

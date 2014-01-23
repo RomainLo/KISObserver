@@ -27,12 +27,12 @@ NSString * const kKISObservationContext = @"com.observation.context";
 	BOOL _isObserving;
 }
 
-- (instancetype)initWithObserver:(id)observer
-								observed:(id)observed
-								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPaths
+- (id)initWithObserver:(id)observer
+				observable:(id)observable
+					options:(NSKeyValueObservingOptions)options
+				  keyPaths:(NSString *)keyPaths
 {
-	if (!observed)
+	if (!observable)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The observed can't be nil." userInfo:nil] raise];
 	if (!observer)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The observer can't be nil." userInfo:nil] raise];
@@ -42,7 +42,7 @@ NSString * const kKISObservationContext = @"com.observation.context";
 	self = [super init];
 	if (self) {
 		_observer = observer;
-		_observed = observed;
+		_observable = observable;
 		_options = options;
 		_keyPaths = keyPaths;
 		_isObserving = NO;
@@ -55,7 +55,7 @@ NSString * const kKISObservationContext = @"com.observation.context";
 {
 	if (_isObserving) {
 		for (NSString *key in self.keyPathArray) {
-			[self.observed removeObserver:self forKeyPath:key context:(__bridge void *)(kKISObservationContext)];
+			[self.observable removeObserver:self forKeyPath:key context:(__bridge void *)(kKISObservationContext)];
 		}
 	}
 }
@@ -64,14 +64,14 @@ NSString * const kKISObservationContext = @"com.observation.context";
 {
 	if (_isObserving) return;
 	
-	NSKeyValueObservingOptions optionsWithoutInit = self.options & (NSKeyValueObservingOptionInitial ^ NSIntegerMax);
+	const NSKeyValueObservingOptions optionsWithoutInit = self.options & (NSKeyValueObservingOptionInitial ^ NSIntegerMax);
 	for (NSString *key in self.keyPathArray) {
-		[self.observed addObserver:self forKeyPath:key options:optionsWithoutInit context:(__bridge void *)(kKISObservationContext)];
+		[self.observable addObserver:self forKeyPath:key options:optionsWithoutInit context:(__bridge void *)(kKISObservationContext)];
 	}
 	
-	BOOL needToInitialized = self.options & NSKeyValueObservingOptionInitial;
+	const BOOL needToInitialized = self.options & NSKeyValueObservingOptionInitial;
 	if (needToInitialized) {
-		[self observeValueForKeyPath:self.keyPaths ofObject:self.observed change:@{} context:(__bridge void *)(kKISObservationContext)];
+		[self observeValueForKeyPath:self.keyPaths ofObject:self.observable change:@{} context:(__bridge void *)(kKISObservationContext)];
 	}
 	_isObserving = true;
 }

@@ -19,6 +19,10 @@
 // THE SOFTWARE.
 //
 
+/**
+ Main header that includes all the public interfaces.
+ */
+
 #import "NSObject+KISObserver.h"
 
 #import "KISNotification.h"

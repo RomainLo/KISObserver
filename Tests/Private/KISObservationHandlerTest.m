@@ -34,7 +34,7 @@
 	self.notificationCount = 0;
 	self.observed = [KISKvoObject new];
 	self.observer = [[KISObservationHandler alloc] init];
-	self.observation = [[KISBlockObservation alloc] initWithObserver:self observed:self.observed options:0 keyPaths:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {
+	self.observation = [[KISBlockObservation alloc] initWithObserver:self observable:self.observed options:0 keyPaths:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {
 		self.notificationCount += 1;
 	}];
 }
@@ -54,16 +54,18 @@
 	XCTAssertEqual(self.notificationCount, 1U, @"Should be notified twice since the observation is add twice.");
 }
 
+#pragma mark - Remove
+
 - (void)testRemove
 {
 	[self.observer addObservation:self.observation];
-	[self.observer removeObservationOfObject:self.observation.observed forKeyPaths:self.observation.keyPaths];
+	[self.observer removeObservationOfObject:self.observation.observable forKeyPaths:self.observation.keyPaths];
 	XCTAssertEqual(self.observer.observations.count, 0U, @"Should have only the element.");
 }
 
 - (void)testRemoveUnknownObservation
 {
-	XCTAssertNoThrow([self.observer removeObservationOfObject:self.observation.observed forKeyPaths:self.observation.keyPaths]);
+	XCTAssertNoThrow([self.observer removeObservationOfObject:self.observation.observable forKeyPaths:self.observation.keyPaths]);
 }
 
 - (void)testRemoveAll
@@ -82,16 +84,18 @@
 	XCTAssertEqual(self.notificationCount, 0U, @"Shouldn't be notified by the notification because it is deallocated.");
 }
 
+#pragma mark - isObserving
+
 - (void)testIsObserving
 {
 	[self.observer addObservation:self.observation];
-	XCTAssertTrue([self.observer isObservingObject:self.observation.observed forKeyPaths:kKvoPropertyKeyPath1], @"Should observe the given object.");
+	XCTAssertTrue([self.observer isObservingObject:self.observation.observable forKeyPaths:kKvoPropertyKeyPath1], @"Should observe the given object.");
 }
 
 - (void)testIsNOTObservingKeyPath
 {
 	[self.observer addObservation:self.observation];
-	XCTAssertFalse([self.observer isObservingObject:self.observation.observed forKeyPaths:kKvoPropertyKeyPaths], @"Should NOT observe this path.");
+	XCTAssertFalse([self.observer isObservingObject:self.observation.observable forKeyPaths:kKvoPropertyKeyPaths], @"Should NOT observe this path.");
 }
 
 - (void)testIsNOTObservingObject

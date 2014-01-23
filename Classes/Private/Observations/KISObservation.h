@@ -27,7 +27,7 @@ extern NSString * const kKISObservationContext;
 @property (nonatomic, weak, readonly) id observer;
 
 /** The object which is observed. */
-@property (nonatomic, weak, readonly) id observed;
+@property (nonatomic, weak, readonly) id observable;
 
 /** The option of the observation. */
 @property (nonatomic, assign, readonly) NSKeyValueObservingOptions options;
@@ -44,15 +44,15 @@ extern NSString * const kKISObservationContext;
 @interface KISObservationBase : NSObject <KISObservation>
 
 @property (nonatomic, weak, readonly) id observer;
-@property (nonatomic, weak, readonly) id observed;
+@property (nonatomic, weak, readonly) id observable;
 @property (nonatomic, assign, readonly) NSKeyValueObservingOptions options;
 @property (nonatomic, copy, readonly) NSString *keyPaths;
 @property (nonatomic, copy, readonly) NSArray *keyPathArray;
 
-- (instancetype)initWithObserver:(id)observer
-								observed:(id)observed
-								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPaths;
+- (id)initWithObserver:(id)observer
+				observable:(id)observable
+					options:(NSKeyValueObservingOptions)options
+				  keyPaths:(NSString *)keyPaths;
 
 - (void)startObservation;
 

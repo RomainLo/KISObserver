@@ -20,7 +20,7 @@
 //
 
 /**
- Immutable object that represent a KVO notification.
+ Immutable object that represents a KVO notification.
  */
 @interface KISNotification : NSObject
 
@@ -57,6 +57,9 @@
 
 /** The replace indexes into the to-many relationship that is being observed. */
 @property (nonatomic, strong, readonly) NSIndexSet *replaceIndexSet;
+
+/** Say if the notification is for setting. */
+@property (nonatomic, assign, readonly, getter = isSetting) BOOL setting;
 
 /** Say if the notification is prior. */
 @property (nonatomic, assign, readonly, getter = isPrior) BOOL prior;

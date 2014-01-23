@@ -22,14 +22,14 @@
 @class KISNotification;
 
 /**
- A category on NSObject that provides easy-to-use KVO handlings.
+ A category on NSObject that provides an easy-to-use KVO.
  
  You can add an observation of many keypaths at the same time by separating
  them with a '|' when you call an observeObject:forKeyPaths:[*] method.
  Exemple:
  [self observeObject:obj forKeyPaths:@"key1|key2|key3"];
  
- The observations are automatically removed when the observater is deallocated.
+ The observations are automatically removed when the observer is deallocated.
  */
 @interface NSObject (KISObserver)
 

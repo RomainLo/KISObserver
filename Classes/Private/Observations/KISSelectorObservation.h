@@ -26,10 +26,10 @@
 
 @property (nonatomic, assign, readonly) SEL selector;
 
-- (instancetype)initWithObserver:(id)observer
-								observed:(id)observed
-								 options:(NSKeyValueObservingOptions)options
-								keyPaths:(NSString *)keyPaths
-								selector:(SEL)selector;
+- (id)initWithObserver:(id)observer
+				observable:(id)observable
+					options:(NSKeyValueObservingOptions)options
+				  keyPaths:(NSString *)keyPaths
+				  selector:(SEL)selector;
 
 @end
