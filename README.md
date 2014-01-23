@@ -7,7 +7,7 @@ Moreover, the observer remove automagically the observations when it is dealloca
 
 ## How to use it
 
-Comming soon!
+Coming soon!
 
 ## License
 
