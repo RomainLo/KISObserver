@@ -26,16 +26,27 @@
 
 @property (nonatomic, readonly, copy) NSArray *observations;
 
-/** Add an observation. */
+/**
+ Add an observation.
+ @param observation The observation to add and handle.
+ */
 - (void)addObservation:(id<KISObservation>)observation; // id<KISObservation> for orthogonality.
 
-/** Remove an observation on a object for given keypaths. */
+/**
+ Remove an observation on a object for given keypaths.
+ @param object The observable object of the notification to remove.
+ @param keyPaths The keypath of the notification to remove.
+ */
 - (void)removeObservationOfObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths;
 
 /** Remove all observation. */
 - (void)removeAllObservations;
 
-/** Say YES if it contains an observation on a object for given keypaths. */
+/**
+ Say YES if it contains an observation on a object for given keypaths.
+ @param object The observable object of the notification to find.
+ @param keyPaths The keyPaths of the notification to find.
+ */
 - (BOOL)isObservingObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths;
 
 @end

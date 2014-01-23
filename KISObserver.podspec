@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
   s.homepage	  = 'https://github.com/RomainLo/KISObserver'
   s.license      = 'MIT'
   s.source       = { :git => "https://github.com/RomainLo/KISObserver.git", :tag => s.version.to_s }
+  s.authors 	  = { 'Romain Lofaso' => 'romain.lofaso@gmail.com' }
   
   s.requires_arc = true
   s.source_files = 'Classes'

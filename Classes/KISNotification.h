@@ -24,7 +24,12 @@
  */
 @interface KISNotification : NSObject
 
-/** Initializer with the usefull parameters of -observeValueForKeyPath:ofObject:change:context: */
+/**
+ Initializer with the usefull parameters of -observeValueForKeyPath:ofObject:change:context:
+ @param observable The source object of the key path keyPath.
+ @param keyPath The key path, relative to object, to the value that has changed.
+ @param change A dictionary that describes the changes that have been made to the value of the property at the key path keyPath relative to object.
+ */
 - (id)initWithObservable:(id)observable keyPath:(NSString *)keyPath change:(NSDictionary *)change;
 
 /** The observed object that has triggered the notification. */
