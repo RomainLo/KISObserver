@@ -55,17 +55,17 @@
 	return (value != [NSNull null]) ? value : nil;
 }
 
-- (NSIndexSet *)insertIndexSet
+- (NSIndexSet *)insertionIndexSet
 {
 	return [self kvc_indexSetByKeyValueChange:NSKeyValueChangeInsertion];
 }
 
-- (NSIndexSet *)removeIndexSet
+- (NSIndexSet *)removalIndexSet
 {
 	return [self kvc_indexSetByKeyValueChange:NSKeyValueChangeRemoval];
 }
 
-- (NSIndexSet *)replaceIndexSet
+- (NSIndexSet *)replacementIndexSet
 {
 	return [self kvc_indexSetByKeyValueChange:NSKeyValueChangeReplacement];
 }

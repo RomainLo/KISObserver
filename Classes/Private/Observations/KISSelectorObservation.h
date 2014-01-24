@@ -24,6 +24,7 @@
 /** Observation that notifies the observer via a selector. */
 @interface KISSelectorObservation : KISObservationBase
 
+/** Selector that is called when a notification shows up. */
 @property (nonatomic, assign, readonly) SEL selector;
 
 - (id)initWithObserver:(id)observer

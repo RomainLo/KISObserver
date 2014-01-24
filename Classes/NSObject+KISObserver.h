@@ -29,6 +29,8 @@
  Exemple:
  [self observeObject:obj forKeyPaths:@"key1|key2|key3"];
  
+ The default options are (NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld)
+ 
  The observations are automatically removed when the observer is deallocated.
  */
 @interface NSObject (KISObserver)

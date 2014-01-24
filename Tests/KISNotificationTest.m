@@ -59,9 +59,9 @@ static NSString * const kKvoArrayKey = @"kvoArray";
 	XCTAssertFalse(notif.isPrior, @"Should not be a prior notification.");
 	XCTAssertEqual(notif.newValue, newValue, @"Should be the newValue object.");
 	XCTAssertNil(notif.oldValue, @"Should be nil because there is no oldvalue.");
-	XCTAssertNil(notif.insertIndexSet, @"Shoud be nil since we don't insert something in an array.");
-	XCTAssertNil(notif.removeIndexSet, @"Shoud be nil since we don't remove something in an array.");
-	XCTAssertNil(notif.replaceIndexSet, @"Shoud be nil since we don't replace something in an array.");
+	XCTAssertNil(notif.insertionIndexSet, @"Shoud be nil since we don't insert something in an array.");
+	XCTAssertNil(notif.removalIndexSet, @"Shoud be nil since we don't remove something in an array.");
+	XCTAssertNil(notif.replacementIndexSet, @"Shoud be nil since we don't replace something in an array.");
 }
 
 
@@ -77,9 +77,9 @@ static NSString * const kKvoArrayKey = @"kvoArray";
 	XCTAssertTrue(notif.isSetting, @"Should be a setting notification.");
 	XCTAssertTrue(notif.isPrior, @"Should not be a prior notification.");
 	XCTAssertEqual(notif.oldValue, oldValue, @"Should be the oldValue object.");
-	XCTAssertNil(notif.insertIndexSet, @"Shoud be nil since we don't insert something in an array.");
-	XCTAssertNil(notif.removeIndexSet, @"Shoud be nil since we don't remove something in an array.");
-	XCTAssertNil(notif.replaceIndexSet, @"Shoud be nil since we don't replace something in an array.");
+	XCTAssertNil(notif.insertionIndexSet, @"Shoud be nil since we don't insert something in an array.");
+	XCTAssertNil(notif.removalIndexSet, @"Shoud be nil since we don't remove something in an array.");
+	XCTAssertNil(notif.replacementIndexSet, @"Shoud be nil since we don't replace something in an array.");
 }
 
 - (void)testNotificationWithNewOldValue
@@ -96,9 +96,9 @@ static NSString * const kKvoArrayKey = @"kvoArray";
 	XCTAssertFalse(notif.isPrior, @"Should not be a prior notification.");
 	XCTAssertEqual(notif.oldValue, oldValue, @"Should be the oldValue object.");
 	XCTAssertEqual(notif.newValue, newValue, @"Should be the newValue object.");
-	XCTAssertNil(notif.insertIndexSet, @"Shoud be nil since we don't insert something in an array.");
-	XCTAssertNil(notif.removeIndexSet, @"Shoud be nil since we don't remove something in an array.");
-	XCTAssertNil(notif.replaceIndexSet, @"Shoud be nil since we don't replace something in an array.");
+	XCTAssertNil(notif.insertionIndexSet, @"Shoud be nil since we don't insert something in an array.");
+	XCTAssertNil(notif.removalIndexSet, @"Shoud be nil since we don't remove something in an array.");
+	XCTAssertNil(notif.replacementIndexSet, @"Shoud be nil since we don't replace something in an array.");
 }
 
 - (void)testNotificationForInsertion
@@ -113,9 +113,9 @@ static NSString * const kKvoArrayKey = @"kvoArray";
 	XCTAssertFalse(notif.isPrior, @"Should not be a prior notification.");
 	XCTAssertNil(notif.oldValue, @"Should NOT be set.");
 	XCTAssertNil(notif.newValue, @"Should NOT be set.");
-	XCTAssertEqual(notif.insertIndexSet, indexes, @"Shoud be equal to indexes since we insert something in an array.");
-	XCTAssertNil(notif.removeIndexSet, @"Shoud be nil since we don't remove something in an array.");
-	XCTAssertNil(notif.replaceIndexSet, @"Shoud be nil since we don't replace something in an array.");
+	XCTAssertEqual(notif.insertionIndexSet, indexes, @"Shoud be equal to indexes since we insert something in an array.");
+	XCTAssertNil(notif.removalIndexSet, @"Shoud be nil since we don't remove something in an array.");
+	XCTAssertNil(notif.replacementIndexSet, @"Shoud be nil since we don't replace something in an array.");
 }
 
 - (void)testNotificationForRemoval
@@ -130,9 +130,9 @@ static NSString * const kKvoArrayKey = @"kvoArray";
 	XCTAssertFalse(notif.isPrior, @"Should not be a prior notification.");
 	XCTAssertNil(notif.oldValue, @"Should NOT be set.");
 	XCTAssertNil(notif.newValue, @"Should NOT be set.");
-	XCTAssertNil(notif.insertIndexSet, @"Shoud be nil since we don't insert something in an array.");
-	XCTAssertEqual(notif.removeIndexSet, indexes, @"Shoud be equal to indexes since we remove something in an array.");
-	XCTAssertNil(notif.replaceIndexSet, @"Shoud be nil since we don't replace something in an array.");
+	XCTAssertNil(notif.insertionIndexSet, @"Shoud be nil since we don't insert something in an array.");
+	XCTAssertEqual(notif.removalIndexSet, indexes, @"Shoud be equal to indexes since we remove something in an array.");
+	XCTAssertNil(notif.replacementIndexSet, @"Shoud be nil since we don't replace something in an array.");
 }
 
 - (void)testNotificationForReplacement
@@ -147,9 +147,9 @@ static NSString * const kKvoArrayKey = @"kvoArray";
 	XCTAssertFalse(notif.isPrior, @"Should not be a prior notification.");
 	XCTAssertNil(notif.oldValue, @"Should NOT be set.");
 	XCTAssertNil(notif.newValue, @"Should NOT be set.");
-	XCTAssertNil(notif.insertIndexSet, @"Shoud be nil since we don't insert something in an array.");
-	XCTAssertNil(notif.removeIndexSet, @"Shoud be nil since we don't remove something in an array.");
-	XCTAssertEqual(notif.replaceIndexSet, indexes, @"Shoud be equal to indexes since we replace something in an array.");
+	XCTAssertNil(notif.insertionIndexSet, @"Shoud be nil since we don't insert something in an array.");
+	XCTAssertNil(notif.removalIndexSet, @"Shoud be nil since we don't remove something in an array.");
+	XCTAssertEqual(notif.replacementIndexSet, indexes, @"Shoud be equal to indexes since we replace something in an array.");
 }
 
 @end

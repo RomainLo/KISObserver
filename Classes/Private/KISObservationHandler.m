@@ -57,13 +57,19 @@ NSString * const kKISObserverContext = @"kis.observer.context";
 
 - (void)addObservation:(id<KISObservation>)observation
 {
-	if (! [_observations containsObject:observation]) {
+	if (nil == observation)
+		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The observation can't be nil." userInfo:nil] raise];
+	
+	if ((! [_observations containsObject:observation])) {
 		[_observations addObject:observation];
 	}
 }
 
 - (void)removeObservationOfObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths
 {
+	if ((nil == object) || (0 == keyPaths.length))
+		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The parameters can't be nil." userInfo:nil] raise];
+	
 	const NSUInteger index = [self _indexOfObservationWithObserved:object keyPaths:keyPaths];
 	if (NSNotFound != index) {
 		[_observations removeObjectAtIndex:index];

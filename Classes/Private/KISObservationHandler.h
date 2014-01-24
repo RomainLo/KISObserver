@@ -24,18 +24,21 @@
 /** Retain and handle a list of observations. */
 @interface KISObservationHandler : NSObject
 
+/** The array of handled observations. */
 @property (nonatomic, readonly, copy) NSArray *observations;
 
 /**
- Add an observation.
+ Add an observation to the end of the 'observations' array.
  @param observation The observation to add and handle.
+ @exception Parameter can't be nil.
  */
 - (void)addObservation:(id<KISObservation>)observation; // id<KISObservation> for orthogonality.
 
 /**
- Remove an observation on a object for given keypaths.
+ Remove an observation related to an object for given keypaths.
  @param object The observable object of the notification to remove.
  @param keyPaths The keypath of the notification to remove.
+ @exception Parameters can't be nil.
  */
 - (void)removeObservationOfObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths;
 

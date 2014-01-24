@@ -31,6 +31,7 @@ typedef void(^KISObserverBlock)(KISNotification *notification);
 /** Observation that notifies the observer via a block. */
 @interface KISBlockObservation : KISObservationBase
 
+/** Selector that is called when a notification shows up. */
 @property (nonatomic, copy, readonly) KISObserverBlock block;
 
 - (id)initWithObserver:(id)observer

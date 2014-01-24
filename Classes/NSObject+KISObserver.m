@@ -31,12 +31,13 @@
 #import "KISSelectorObservation.h"
 #import "KISDefaultObservation.h"
 
+#define OBSERVER_DEFAULT_OPTIONS NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+
 
 @implementation NSObject (KISObserver)
 
 - (KISObservationHandler *)kis_observer {
 	static NSString * const observerKey = @"kis_observer";
-	
 	KISObservationHandler *ob = objc_getAssociatedObject(self, (__bridge const void *)(observerKey));
 	
 	if (nil == ob) {
@@ -62,7 +63,7 @@
 			 forKeyPaths:(NSString *)keyPaths
 				withBlock:(void(^)(KISNotification *notification))block
 {
-	KISBlockObservation * const observation = [[KISBlockObservation alloc] initWithObserver:self observable:object options:0 keyPaths:keyPaths block:block];
+	KISBlockObservation * const observation = [[KISBlockObservation alloc] initWithObserver:self observable:object options:OBSERVER_DEFAULT_OPTIONS keyPaths:keyPaths block:block];
 	[[self kis_observer] addObservation:observation];
 }
 
@@ -79,7 +80,7 @@
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
 {
-	KISDefaultObservation * const observation = [[KISDefaultObservation alloc] initWithObserver:self observable:object options:0 keyPaths:keyPaths];
+	KISDefaultObservation * const observation = [[KISDefaultObservation alloc] initWithObserver:self observable:object options:OBSERVER_DEFAULT_OPTIONS keyPaths:keyPaths];
 	[[self kis_observer] addObservation:observation];
 }
 
@@ -96,7 +97,7 @@
 			 forKeyPaths:(NSString *)keyPaths
 			withSelector:(SEL)selector
 {
-	KISSelectorObservation * const observation = [[KISSelectorObservation alloc] initWithObserver:self observable:object options:0 keyPaths:keyPaths selector:selector];
+	KISSelectorObservation * const observation = [[KISSelectorObservation alloc] initWithObserver:self observable:object options:OBSERVER_DEFAULT_OPTIONS keyPaths:keyPaths selector:selector];
 	[[self kis_observer] addObservation:observation];
 }
 
