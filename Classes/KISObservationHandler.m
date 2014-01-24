@@ -22,6 +22,7 @@
 #import "KISObservationHandler.h"
 
 #import "KISObservation.h"
+#import "KISNotification.h"
 
 NSString * const kKISObserverContext = @"kis.observer.context";
 
