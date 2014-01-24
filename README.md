@@ -8,7 +8,6 @@ Moreover, the observer remove automagically the observations when it is dealloca
 ## How to use it
 
 An observation with a block and the default options:
-
 ```objective-c
 [self observeObject:ob forKeyPaths:@"property" withBlock:^(KISNotification *notification) {
 	NSLog(@"New value:\t%@", notification.newValue);
@@ -17,7 +16,6 @@ An observation with a block and the default options:
 ```
 
 An observation with a selector on a one-to-many relation:
-
 ```objective-c
 NSKeyValueObservingOptions opt = NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
 [self observeObject:ob forKeyPaths:@"arr" options:opt withSelector:@selector(onChangeWithNotification:)];
@@ -34,7 +32,6 @@ NSKeyValueObservingOptions opt = NSKeyValueObservingOptionInitial | NSKeyValueOb
 ```
 
 Your dealloc:
-
 ```
 - (void)dealloc
 {
