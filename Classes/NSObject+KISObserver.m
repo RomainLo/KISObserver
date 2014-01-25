@@ -23,10 +23,11 @@
 
 #import <objc/runtime.h>
 
-#import "KISObservationHandler.h"
+
 #import "KISNotification.h"
 
 // Observations
+#import "KISObservationHandler.h"
 #import "KISBlockObservation.h"
 #import "KISSelectorObservation.h"
 #import "KISDefaultObservation.h"
