@@ -56,7 +56,7 @@ automates and simplifies the process of using 3rd-party libraries in your projec
 
 3. Import KISObserver within the files that are going to use it
 
-	\#import <KISObserver/KISObserver.h>
+	\#import &lt;KISObserver/KISObserver.h&gt;
 
 
 ## License
