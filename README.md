@@ -48,7 +48,7 @@ automates and simplifies the process of using 3rd-party libraries in your projec
 
 1. Add the project inside your Podfile
 
-        pod KISObserver, '~> 1.0.x'
+        pod 'KISObserver', '~> 1.0.x'
     
 2. Update your installation
         
