@@ -39,6 +39,19 @@
 	return self;
 }
 
+- (NSString *)description
+{
+	NSMutableString * const result = [NSMutableString stringWithFormat:@"<%@ %p> observable: %@; keypath: %@", [self class], self, self.observable, self.keyPath];
+	if (self.newValue) [result appendFormat:@"; newValue: %@", self.newValue];
+	if (self.oldValue) [result appendFormat:@"; oldValue: %@", self.oldValue];
+	if (self.insertionIndexSet) [result appendFormat:@"; insertionIndexSet: %@", self.insertionIndexSet];
+	if (self.removalIndexSet) [result appendFormat:@"; removalIndexSet: %@", self.removalIndexSet];
+	if (self.replacementIndexSet) [result appendFormat:@"; removalIndexSet: %@", self.replacementIndexSet];
+	if (self.isPrior) [result appendString:@"; isPrior"];
+	if (self.isSetting) [result appendString:@"; isSetting"];
+	return result;
+}
+
 @end
 
 @implementation KISNotification (KeyValueChange)
