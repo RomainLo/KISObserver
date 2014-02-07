@@ -49,7 +49,8 @@
 
 - (void)testNotificationWithObservingOptionInitial
 {
-	[[self.observer expect] observeValueForKeyPath:kKvoPropertyKeyPaths ofObject:self.observed change:[OCMArg any] context:(__bridge void *)(kKISObservationContext)];
+	[[self.observer expect] observeValueForKeyPath:kKvoPropertyKeyPath1 ofObject:self.observed change:[OCMArg any] context:(__bridge void *)(kKISObservationContext)];
+	[[self.observer expect] observeValueForKeyPath:kKvoPropertyKeyPath2 ofObject:self.observed change:[OCMArg any] context:(__bridge void *)(kKISObservationContext)];
    KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionInitial keyPaths:kKvoPropertyKeyPaths];
 	[self.observer verify];
 }

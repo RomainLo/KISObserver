@@ -64,15 +64,10 @@ NSString * const kKISObservationContext = @"com.observation.context";
 {
 	if (_isObserving) return;
 	
-	const NSKeyValueObservingOptions optionsWithoutInit = self.options & (NSKeyValueObservingOptionInitial ^ NSIntegerMax);
 	for (NSString *key in self.keyPathArray) {
-		[self.observable addObserver:self forKeyPath:key options:optionsWithoutInit context:(__bridge void *)(kKISObservationContext)];
+		[self.observable addObserver:self forKeyPath:key options:self.options context:(__bridge void *)(kKISObservationContext)];
 	}
-	
-	const BOOL needToInitialized = self.options & NSKeyValueObservingOptionInitial;
-	if (needToInitialized) {
-		[self observeValueForKeyPath:self.keyPaths ofObject:self.observable change:@{} context:(__bridge void *)(kKISObservationContext)];
-	}
+
 	_isObserving = true;
 }
 
