@@ -46,7 +46,7 @@
  @param keyPaths A list of keypaths (separated by '|') to observe.
  @param options A combination of values that specifies what is included in observation notifications.
  
- @exception NSException Throw if one of the parameters is nil or empty string.
+ @exception NSException Throw if the keypaths value is nil or empty.
  */
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
@@ -60,7 +60,7 @@
  @param object The targeted object of the observation.
  @param keyPaths A list of keypaths (separated by '|') to observe.
  
- @exception NSException Throw if one of the parameters is nil or empty string.
+ @exception NSException Throw if the keypaths value is nil or empty.
  */
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths;
@@ -78,7 +78,7 @@
  @param options A combination of values that specifies what is included in observation notifications.
  @param block The block that will be called when there is a notification.
  
- @exception NSException Throw if one of the parameters is nil or empty string.
+ @exception NSException Throw if the keypaths value is nil or empty.
  */
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
@@ -92,7 +92,7 @@
  @param keyPaths A list of keypaths (separated by '|') to observe.
  @param block The block that will be called when there is a notification.
  
- @exception NSException Throw if one of the parameters is nil or empty string.
+ @exception NSException Throw if the keypaths value is nil or empty.
  */
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
@@ -114,8 +114,8 @@
  @param options A combination of values that specifies what is included in observation notifications.
  @param selector The selector that will be called (on the observer) when there is a notification.
  
- @exception NSException Throw if one of the parameters is nil or empty string.
- @exception NSException Throw if doesn't exist on the observer or have more than two arguments.
+ @exception NSException Throw if the keypaths value is nil or empty.
+ @exception NSException Throw if the selector doesn't exist on the observer or have more than one argument.
  */
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
@@ -133,8 +133,8 @@
  @param keyPaths A list of keypaths (separated by '|') to observe.
  @param selector The selector that will be called (on the observer) when there is a notification.
  
- @exception NSException Throw if one of the parameters is nil or empty string.
- @exception NSException Throw if doesn't exist on the observer or have more than two arguments.
+ @exception NSException Throw if the keypaths value is nil or empty.
+ @exception NSException Throw if the selector doesn't exist on the observer or have more than one argument.
  */
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
