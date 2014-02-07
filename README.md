@@ -2,8 +2,8 @@
 
 KISObserver is an easy way to use the [**Key-Value Observing**](https://developer.apple.com/library/mac/documentation/cocoa/conceptual/KeyValueObserving/KeyValueObserving.html) (**KVO**) pattern.
 
-It allowes you to observe objects for keypaths with **blocks**, **selectors** and the usual API.
-Moreover, the observer remove automagically the observations when it is deallocated.
+You can observe objects for keypaths with **blocks**, **selectors** and the usual API.
+Moreover, the observer removes automagically the observations when it is deallocated.
 
 ## How to use it
 

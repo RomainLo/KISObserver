@@ -58,7 +58,7 @@ task :release do
   sh "pod lib lint"
 
   # Then release
-  sh "git commit #{podspec_path} CHANGELOG.md -m 'Release #{spec_version}'"
+  sh "git commit #{podspec_path} CHANGELOG.md -m 'Key-Value Observing (KVO) pattern with blocks and selectors - Release #{spec_version}'"
   sh "git tag -a #{spec_version} -m 'Release #{spec_version}'"
   sh "git push origin master"
   sh "git push origin --tags"

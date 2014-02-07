@@ -56,6 +56,7 @@
 				  options:(NSKeyValueObservingOptions)options
 				withBlock:(void(^)(KISNotification *notification))block
 {
+	if (! object) return;
 	KISBlockObservation * const observation = [[KISBlockObservation alloc] initWithObserver:self observable:object options:options keyPaths:keyPaths block:block];
 	[[self kis_observer] addObservation:observation];
 }
@@ -64,6 +65,7 @@
 			 forKeyPaths:(NSString *)keyPaths
 				withBlock:(void(^)(KISNotification *notification))block
 {
+	if (! object) return;
 	KISBlockObservation * const observation = [[KISBlockObservation alloc] initWithObserver:self observable:object options:OBSERVER_DEFAULT_OPTIONS keyPaths:keyPaths block:block];
 	[[self kis_observer] addObservation:observation];
 }
@@ -74,6 +76,7 @@
 			 forKeyPaths:(NSString *)keyPaths
 				  options:(NSKeyValueObservingOptions)options
 {
+	if (! object) return;
 	KISDefaultObservation * const observation = [[KISDefaultObservation alloc] initWithObserver:self observable:object options:options keyPaths:keyPaths];
 	[[self kis_observer] addObservation:observation];
 }
@@ -81,6 +84,7 @@
 - (void)observeObject:(NSObject *)object
 			 forKeyPaths:(NSString *)keyPaths
 {
+	if (! object) return;
 	KISDefaultObservation * const observation = [[KISDefaultObservation alloc] initWithObserver:self observable:object options:OBSERVER_DEFAULT_OPTIONS keyPaths:keyPaths];
 	[[self kis_observer] addObservation:observation];
 }
@@ -90,6 +94,7 @@
 				  options:(NSKeyValueObservingOptions)options
 			withSelector:(SEL)selector
 {
+	if (! object) return;
 	KISSelectorObservation * const observation = [[KISSelectorObservation alloc] initWithObserver:self observable:object options:options keyPaths:keyPaths selector:selector];
 	[[self kis_observer] addObservation:observation];
 }
@@ -98,12 +103,14 @@
 			 forKeyPaths:(NSString *)keyPaths
 			withSelector:(SEL)selector
 {
+	if (! object) return;
 	KISSelectorObservation * const observation = [[KISSelectorObservation alloc] initWithObserver:self observable:object options:OBSERVER_DEFAULT_OPTIONS keyPaths:keyPaths selector:selector];
 	[[self kis_observer] addObservation:observation];
 }
 
 - (void)stopObservingObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths
 {
+	if (! object) return;
 	[[self kis_observer] removeObservationOfObject:object forKeyPaths:keyPaths];
 }
 

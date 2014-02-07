@@ -95,6 +95,7 @@
 		FF6C0DEA189327BC00792FDE /* KISObservationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISObservationHandler.m; sourceTree = "<group>"; };
 		FF6C0DEB189327BC00792FDE /* KISSelectorObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISSelectorObservation.h; sourceTree = "<group>"; };
 		FF6C0DEC189327BC00792FDE /* KISSelectorObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISSelectorObservation.m; sourceTree = "<group>"; };
+		FF6C0DF918932D8100792FDE /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
 		FFFABFEB186F8B770090428E /* libKISObserver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKISObserver.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFABFEE186F8B770090428E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FFFABFFC186F8B770090428E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -199,6 +200,7 @@
 		FFFABFE2186F8B770090428E = {
 			isa = PBXGroup;
 			children = (
+				FF6C0DF918932D8100792FDE /* CHANGELOG.md */,
 				FF2DAC1A1885FFEC000A3794 /* .travis.yml */,
 				FF647051186F8DB7004E2362 /* LICENSE */,
 				FF647052186F8DB7004E2362 /* Rakefile */,

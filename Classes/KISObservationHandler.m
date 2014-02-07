@@ -67,8 +67,8 @@ NSString * const kKISObserverContext = @"kis.observer.context";
 }
 
 - (void)removeObservationOfObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths
-{
-	if ((nil == object) || (0 == keyPaths.length))
+{	
+	if (0 == keyPaths.length)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The parameters can't be nil." userInfo:nil] raise];
 	
 	const NSUInteger index = [self _indexOfObservationWithObserved:object keyPaths:keyPaths];
