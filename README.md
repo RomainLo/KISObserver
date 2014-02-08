@@ -31,6 +31,15 @@ NSKeyValueObservingOptions opt = NSKeyValueObservingOptionInitial | NSKeyValueOb
 }
 ```
 
+An observation of many keypaths at the same time:
+```objective-c
+[self observeObject:ob forKeyPaths:@"prop1|prop2" withBlock:^(KISNotification *notification) {
+	NSLog(@"KeyPath:\t%@", notification.keyPath);
+	NSLog(@"New value:\t%@", notification.newValue);
+	NSLog(@"Old value:\t%@", notification.oldValue);
+}];
+```
+
 Your dealloc:
 ```
 - (void)dealloc
