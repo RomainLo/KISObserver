@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "KISObserver"
-  s.version      = "1.0.0"
+  s.version      = "1.1.0"
   s.summary      = "An easy way to use the Key-Value Observing (KVO) pattern with blocks and selectors."
   s.homepage	  = 'https://github.com/RomainLo/KISObserver'
   s.license      = 'MIT'
