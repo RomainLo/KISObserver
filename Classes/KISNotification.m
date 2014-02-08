@@ -101,7 +101,7 @@
 {
 	const BOOL isGoodKvc = [self.change[NSKeyValueChangeKindKey] intValue] == kvc;
 	NSIndexSet * const kvcIndexSet = self.change[NSKeyValueChangeIndexesKey];
-	return (isGoodKvc && kvcIndexSet.count) ? kvcIndexSet : nil;
+	return (isGoodKvc && kvcIndexSet.count) ? kvcIndexSet : [NSIndexSet indexSet];
 }
 
 @end
