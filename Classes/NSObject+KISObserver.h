@@ -153,6 +153,12 @@
 - (void)stopObservingObject:(NSObject *)object
 					 forKeyPaths:(NSString *)keyPaths;
 
+/**
+ Remove the observations related to an object.
+ @param object The observable object.
+ */
+- (void)stopObservingObject:(NSObject *)object;
+
 /** Remove all observations. */
 - (void)stopObservingAllObjects;
 

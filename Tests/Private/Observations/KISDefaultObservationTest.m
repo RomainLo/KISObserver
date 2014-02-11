@@ -33,15 +33,7 @@
 
 - (void)testNotification
 {
-   KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self.observer observable:self.observed options:0 keyPaths:kKvoPropertyKeyPath1];
-	[[self.observer expect] observeValueForKeyPath:kKvoPropertyKeyPath1 ofObject:self.observed change:[OCMArg any] context:(__bridge void *)(kKISObservationContext)];
-	self.observed.kvoProperty1 += 1;
-	[self.observer verify];
-}
-
-- (void)testNotificationWithManyKeyPaths
-{
-   KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self.observer observable:self.observed options:0 keyPaths:kKvoPropertyKeyPaths];
+   KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self.observer observable:self.observed options:0 keyPath:kKvoPropertyKeyPath1];
 	[[self.observer expect] observeValueForKeyPath:kKvoPropertyKeyPath1 ofObject:self.observed change:[OCMArg any] context:(__bridge void *)(kKISObservationContext)];
 	self.observed.kvoProperty1 += 1;
 	[self.observer verify];
@@ -50,8 +42,7 @@
 - (void)testNotificationWithObservingOptionInitial
 {
 	[[self.observer expect] observeValueForKeyPath:kKvoPropertyKeyPath1 ofObject:self.observed change:[OCMArg any] context:(__bridge void *)(kKISObservationContext)];
-	[[self.observer expect] observeValueForKeyPath:kKvoPropertyKeyPath2 ofObject:self.observed change:[OCMArg any] context:(__bridge void *)(kKISObservationContext)];
-   KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionInitial keyPaths:kKvoPropertyKeyPaths];
+   KISDefaultObservation *observation __attribute__((unused)) = [[KISDefaultObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionInitial keyPath:kKvoPropertyKeyPath1];
 	[self.observer verify];
 }
 

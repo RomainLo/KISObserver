@@ -26,9 +26,9 @@
 - (id)initWithObserver:(id)observer
 				observable:(id)observable
 					options:(NSKeyValueObservingOptions)options
-				  keyPaths:(NSString *)keyPaths
+					keyPath:(NSString *)keyPath
 {
-	self = [super initWithObserver:observer observable:observable options:options keyPaths:keyPaths];
+	self = [super initWithObserver:observer observable:observable options:options keyPath:keyPath];
 	if (self) {
 		[self startObservation];
 	}

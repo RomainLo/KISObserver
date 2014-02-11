@@ -66,15 +66,23 @@ NSString * const kKISObserverContext = @"kis.observer.context";
 	}
 }
 
-- (void)removeObservationOfObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths
+- (void)removeObservationOfObject:(NSObject *)object forKeyPath:(NSString *)keyPath
 {	
-	if (0 == keyPaths.length)
+	if (0 == keyPath.length)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The parameters can't be nil." userInfo:nil] raise];
 	
-	const NSUInteger index = [self _indexOfObservationWithObserved:object keyPaths:keyPaths];
+	const NSUInteger index = [self _indexOfObservationWithObserved:object keyPath:keyPath];
 	if (NSNotFound != index) {
 		[_observations removeObjectAtIndex:index];
 	}
+}
+
+- (void)removeObservationOfObject:(NSObject *)object
+{
+	NSIndexSet *indexes = [_observations indexesOfObjectsPassingTest:^BOOL(id<KISObservation> obs, NSUInteger idx, BOOL *stop) {
+		return obs.observable == object;
+	}];
+	[_observations removeObjectsAtIndexes:indexes];
 }
 
 - (void)removeAllObservations
@@ -82,18 +90,18 @@ NSString * const kKISObserverContext = @"kis.observer.context";
 	[_observations removeAllObjects];
 }
 
-- (BOOL)isObservingObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths
+- (BOOL)isObservingObject:(NSObject *)object forKeyPath:(NSString *)keyPath
 {
-	const NSUInteger index = [self _indexOfObservationWithObserved:object keyPaths:keyPaths];
+	const NSUInteger index = [self _indexOfObservationWithObserved:object keyPath:keyPath];
 	return index != NSNotFound;
 }
 
 #pragma mark - Private method
 
-- (NSUInteger)_indexOfObservationWithObserved:(id)object keyPaths:(NSString *)keyPaths
+- (NSUInteger)_indexOfObservationWithObserved:(id)object keyPath:(NSString *)keyPath
 {
 	const NSUInteger index = [_observations indexOfObjectPassingTest:^BOOL(id<KISObservation> observation, NSUInteger idx, BOOL *stop) {
-		return (observation.observable == object) && (0 == [observation.keyPaths compare:keyPaths]);
+		return (observation.observable == object) && (0 == [observation.keyPath compare:keyPath]);
 	}];
 	return index;
 }

@@ -36,11 +36,17 @@
 
 /**
  Remove an observation related to an object for given keypaths.
- @param object The observable object of the notification to remove.
- @param keyPaths The keypath of the notification to remove.
- @exception Parameters can't be nil.
+ @param object The observable object of the observation to remove.
+ @param keyPath The keypath of the notification to remove.
+ @exception The keyPath can't be nil.
  */
-- (void)removeObservationOfObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths;
+- (void)removeObservationOfObject:(NSObject *)object forKeyPath:(NSString *)keyPath;
+
+/**
+ Remove the observations related to an object.
+ @param object The observable object of the observations to remove.
+ */
+- (void)removeObservationOfObject:(NSObject *)object;
 
 /** Remove all observation. */
 - (void)removeAllObservations;
@@ -48,8 +54,8 @@
 /**
  Say YES if it contains an observation on a object for given keypaths.
  @param object The observable object of the notification to find.
- @param keyPaths The keyPaths of the notification to find.
+ @param keyPath The keyPath of the notification to find.
  */
-- (BOOL)isObservingObject:(NSObject *)object forKeyPaths:(NSString *)keyPaths;
+- (BOOL)isObservingObject:(NSObject *)object forKeyPath:(NSString *)keyPath;
 
 @end

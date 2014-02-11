@@ -30,7 +30,7 @@
 - (id)initWithObserver:(id)observer
 				observable:(id)observable
 					options:(NSKeyValueObservingOptions)options
-				  keyPaths:(NSString *)keyPaths
+					keyPath:(NSString *)keyPath
 				  selector:(SEL)selector;
 
 @end

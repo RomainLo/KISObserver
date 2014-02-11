@@ -34,7 +34,7 @@
 	self.notificationCount = 0;
 	self.observed = [KISKvoObject new];
 	self.observer = [[KISObservationHandler alloc] init];
-	self.observation = [[KISBlockObservation alloc] initWithObserver:self observable:self.observed options:0 keyPaths:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {
+	self.observation = [[KISBlockObservation alloc] initWithObserver:self observable:self.observed options:0 keyPath:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {
 		self.notificationCount += 1;
 	}];
 }
@@ -56,16 +56,44 @@
 
 #pragma mark - Remove
 
+- (void)testRemoveOnNil
+{
+	KISBlockObservation *obs1 = [[KISBlockObservation alloc] initWithObserver:self observable:self.observed options:0 keyPath:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {}];
+	[self.observer addObservation:obs1];
+	XCTAssertNoThrow([self.observer removeObservationOfObject:nil]);
+	XCTAssertEqual(self.observer.observations.count, 1U);
+}
+
+- (void)testRemoveOnNonObserved
+{
+	KISBlockObservation *obs1 = [[KISBlockObservation alloc] initWithObserver:self observable:self.observed options:0 keyPath:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {}];
+	[self.observer addObservation:obs1];
+	[self.observer removeObservationOfObject:self];
+	XCTAssertEqual(self.observer.observations.count, 1U);
+}
+
+- (void)testRemoveOnObservable
+{
+	KISBlockObservation *obs1 = [[KISBlockObservation alloc] initWithObserver:self observable:self.observed options:0 keyPath:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {}];
+	KISBlockObservation *obs2 = [[KISBlockObservation alloc] initWithObserver:self observable:self.observed options:0 keyPath:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {}];
+	KISBlockObservation *obs3 = [[KISBlockObservation alloc] initWithObserver:self observable:self options:0 keyPath:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {}];
+	[self.observer addObservation:obs1];
+	[self.observer addObservation:obs2];
+	[self.observer addObservation:obs3];
+	[self.observer removeObservationOfObject:self.observed];
+	XCTAssertEqual(self.observer.observations.count, 1U);
+}
+
 - (void)testRemove
 {
 	[self.observer addObservation:self.observation];
-	[self.observer removeObservationOfObject:self.observation.observable forKeyPaths:self.observation.keyPaths];
+	[self.observer removeObservationOfObject:self.observation.observable forKeyPath:self.observation.keyPath];
 	XCTAssertEqual(self.observer.observations.count, 0U, @"Should have only the element.");
 }
 
 - (void)testRemoveUnknownObservation
 {
-	XCTAssertNoThrow([self.observer removeObservationOfObject:self.observation.observable forKeyPaths:self.observation.keyPaths]);
+	XCTAssertNoThrow([self.observer removeObservationOfObject:self.observation.observable forKeyPath:self.observation.keyPath]);
 }
 
 - (void)testRemoveAll
@@ -89,19 +117,19 @@
 - (void)testIsObserving
 {
 	[self.observer addObservation:self.observation];
-	XCTAssertTrue([self.observer isObservingObject:self.observation.observable forKeyPaths:kKvoPropertyKeyPath1], @"Should observe the given object.");
+	XCTAssertTrue([self.observer isObservingObject:self.observation.observable forKeyPath:kKvoPropertyKeyPath1], @"Should observe the given object.");
 }
 
 - (void)testIsNOTObservingKeyPath
 {
 	[self.observer addObservation:self.observation];
-	XCTAssertFalse([self.observer isObservingObject:self.observation.observable forKeyPaths:kKvoPropertyKeyPaths], @"Should NOT observe this path.");
+	XCTAssertFalse([self.observer isObservingObject:self.observation.observable forKeyPath:kKvoPropertyKeyPaths], @"Should NOT observe this path.");
 }
 
 - (void)testIsNOTObservingObject
 {
 	[self.observer addObservation:self.observation];
-	XCTAssertFalse([self.observer isObservingObject:self forKeyPaths:kKvoPropertyKeyPath1], @"Should NOT observe this object.");
+	XCTAssertFalse([self.observer isObservingObject:self forKeyPath:kKvoPropertyKeyPath1], @"Should NOT observe this object.");
 }
 
 

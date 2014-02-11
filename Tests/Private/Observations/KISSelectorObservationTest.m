@@ -35,23 +35,23 @@
 
 - (void)testInitializer
 {
-   XCTAssertNoThrow([[KISSelectorObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notify)]);
+   XCTAssertNoThrow([[KISSelectorObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionNew keyPath:kKvoPropertyKeyPath1 selector:@selector(notify)]);
 }
 
 - (void)testInitializerWithUnknownSelector
 {
-   XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(addObjectsFromArray:)], @"Should send an exception because the selector is unknown on the object.");
+   XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionNew keyPath:kKvoPropertyKeyPath1 selector:@selector(addObjectsFromArray:)], @"Should send an exception because the selector is unknown on the object.");
 }
 
 - (void)testInitializerWithTooManyArgumentSelector
 {
-	XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notifyWithNotification:whatever:)], @"Should send an exception because the selector has more than one parameter.");
+	XCTAssertThrows([[KISSelectorObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionNew keyPath:kKvoPropertyKeyPath1 selector:@selector(notifyWithNotification:whatever:)], @"Should send an exception because the selector has more than one parameter.");
 }
 
 - (void)testNotificationWithoutArgument
 {
 	[[self.observer expect] notify];
-	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notify)];
+	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionNew keyPath:kKvoPropertyKeyPath1 selector:@selector(notify)];
 	self.observed.kvoProperty1 = 42;
 	[self.observer verify];
 }
@@ -61,7 +61,7 @@
 	[[self.observer expect] notifyWithNotification:[OCMArg checkWithBlock:^BOOL(id obj) {
 		return [obj isKindOfClass:[KISNotification class]];
 	}]];
-	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionNew keyPaths:kKvoPropertyKeyPath1 selector:@selector(notifyWithNotification:)];
+	KISSelectorObservation *obs __attribute__((unused)) = [[KISSelectorObservation alloc] initWithObserver:self.observer observable:self.observed options:NSKeyValueObservingOptionNew keyPath:kKvoPropertyKeyPath1 selector:@selector(notifyWithNotification:)];
 	self.observed.kvoProperty1 = 42;
 	[self.observer verify];
 }

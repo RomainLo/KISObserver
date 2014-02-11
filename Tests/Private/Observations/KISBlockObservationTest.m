@@ -28,18 +28,18 @@
 
 - (void)testInitializer
 {
-	XCTAssertNoThrow([[KISBlockObservation alloc] initWithObserver:self observable:self.observable options:NSKeyValueObservingOptionInitial keyPaths:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {}], @"Should not throw exception.");
+	XCTAssertNoThrow([[KISBlockObservation alloc] initWithObserver:self observable:self.observable options:NSKeyValueObservingOptionInitial keyPath:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {}], @"Should not throw exception.");
 }
 
 - (void)testInitializerWithNilBlock
 {
-	XCTAssertThrows([[KISBlockObservation alloc] initWithObserver:self observable:self.observable options:NSKeyValueObservingOptionInitial keyPaths:kKvoPropertyKeyPath1 block:nil], @"Should throw an exception because the block is nil.");
+	XCTAssertThrows([[KISBlockObservation alloc] initWithObserver:self observable:self.observable options:NSKeyValueObservingOptionInitial keyPath:kKvoPropertyKeyPath1 block:nil], @"Should throw an exception because the block is nil.");
 }
 
 - (void)testNotification
 {
 	__block NSUInteger kvoTriggeredCount = 0;
-	KISBlockObservation *observation __attribute__((unused)) = [[KISBlockObservation alloc] initWithObserver:self observable:self.observable options:0 keyPaths:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {
+	KISBlockObservation *observation __attribute__((unused)) = [[KISBlockObservation alloc] initWithObserver:self observable:self.observable options:0 keyPath:kKvoPropertyKeyPath1 block:^(KISNotification *notification) {
 		kvoTriggeredCount += 1;
 	}];
 	self.observable.kvoProperty1 = 42;

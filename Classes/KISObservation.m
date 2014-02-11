@@ -30,21 +30,21 @@ NSString * const kKISObservationContext = @"com.observation.context";
 - (id)initWithObserver:(id)observer
 				observable:(id)observable
 					options:(NSKeyValueObservingOptions)options
-				  keyPaths:(NSString *)keyPaths
+					keyPath:(NSString *)keyPath
 {
 	if (!observable)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The observed can't be nil." userInfo:nil] raise];
 	if (!observer)
 		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The observer can't be nil." userInfo:nil] raise];
-	if (![keyPaths length])
-		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The keypaths can't be nil or empty." userInfo:nil] raise];
+	if (![keyPath length])
+		[[NSException exceptionWithName:NSInvalidArgumentException reason:@"The keypath can't be nil or empty." userInfo:nil] raise];
 	
 	self = [super init];
 	if (self) {
 		_observer = observer;
 		_observable = observable;
 		_options = options;
-		_keyPaths = keyPaths;
+		_keyPath = keyPath;
 		_isObserving = NO;
 	}
 	
@@ -54,26 +54,15 @@ NSString * const kKISObservationContext = @"com.observation.context";
 - (void)dealloc
 {
 	if (_isObserving) {
-		for (NSString *key in self.keyPathArray) {
-			[self.observable removeObserver:self forKeyPath:key context:(__bridge void *)(kKISObservationContext)];
-		}
+		[self.observable removeObserver:self forKeyPath:self.keyPath context:(__bridge void *)(kKISObservationContext)];
 	}
 }
 
 - (void)startObservation
 {
 	if (_isObserving) return;
-	
-	for (NSString *key in self.keyPathArray) {
-		[self.observable addObserver:self forKeyPath:key options:self.options context:(__bridge void *)(kKISObservationContext)];
-	}
-
+	[self.observable addObserver:self forKeyPath:self.keyPath options:self.options context:(__bridge void *)(kKISObservationContext)];
 	_isObserving = true;
-}
-
-- (NSArray *)keyPathArray
-{
-	return [self.keyPaths componentsSeparatedByString:@"|"];
 }
 
 @end
